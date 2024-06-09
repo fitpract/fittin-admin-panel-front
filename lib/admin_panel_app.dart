@@ -8,7 +8,13 @@ class AdminPanelApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color(0xFFFF8200),
+        ),
+      ),
       home: AuthScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
