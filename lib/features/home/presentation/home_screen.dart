@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fittin_admin_panel/features/history/history_screen.dart';
+import 'package:fittin_admin_panel/features/showcase/showcase_screen.dart';
 import 'package:flutter/material.dart';
-
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -23,12 +25,12 @@ class RouteDestination {
 class _HomeScreenState extends State<HomeScreen> {
   final destinations = const [
     RouteDestination(
-      route: PageRouteInfo('showcase'),
+      route: PageRouteInfo('/showcase'),
       icon: Icons.shopping_cart,
       label: 'Витрина',
     ),
     RouteDestination(
-      route: PageRouteInfo('stories'),
+      route: PageRouteInfo('/history'),
       icon: Icons.history,
       label: 'Истории',
     ),
@@ -79,9 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
   bool extended = false;
   double leadingWidth = 150;
+  final List<Widget> _screens = [
+    ShowcaseScreen(),
+    HistoryScreen(),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -135,8 +142,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   prefixIcon: const Icon(Icons.search),
                   hintText: 'Поиск',
                   filled: true,
-                  fillColor: Color(0xFFF3F3F9),
-                  contentPadding: EdgeInsets.all(10),
+                  fillColor: const Color(0xFFF3F3F9),
+                  contentPadding: const EdgeInsets.all(10),
                   border: OutlineInputBorder(
                     borderSide: const BorderSide(
                       width: 4,
@@ -177,11 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
             labelType: NavigationRailLabelType.none,
             elevation: 5,
             useIndicator: false,
-            selectedIndex: selectedIndex,
+            selectedIndex: _selectedIndex,
             onDestinationSelected: (index) {
               setState(() {
-                selectedIndex = index;
-                context.navigateTo(destinations[index].route);
+                _selectedIndex = index;
               });
             },
             destinations: destinations
@@ -189,13 +195,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   (item) => NavigationRailDestination(
                     icon: Icon(item.icon),
                     label: Text(item.label),
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                 )
                 .toList(),
           ),
           Expanded(
-            child: Container(),
+            child: _screens[_selectedIndex],
           ),
         ],
       ),
