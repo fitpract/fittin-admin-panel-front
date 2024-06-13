@@ -86,10 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-  int _selectedIndex = 0;
-  bool extended = false;
-  double leadingWidth = 200;
-
   final List<Widget> _screens = [
     ShowcaseScreen(),
     HistoryScreen(),
@@ -97,129 +93,43 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = HomeBloc();
     return BlocProvider<HomeBloc>(
       create: (context) => HomeBloc(),
-      child: Scaffold(
-        backgroundColor: const Color(0xFFEDEDED),
-        appBar: WebBar(bloc: bloc),
-        /*appBar: AppBar(
-          //leadingWidth: leadingWidth,
-          leading: BlocBuilder<HomeBloc, HomeState>(
-            bloc: bloc,
-            builder: (context, state) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  state.expanded
-                      ? SvgPicture.asset(
-                          'lib/core/style/assets/fittin-large-logo.svg',
-                          semanticsLabel: 'Fittin',
-                          alignment: Alignment.centerLeft,
-                          height: 47,
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: SvgPicture.asset(
-                            'lib/core/style/assets/fittin-small-logo.svg',
-                            semanticsLabel: 'Fittin',
-                            alignment: Alignment.centerLeft,
-                            height: 30,
-                          ),
-                        ),
-                  IconButton(
-                    onPressed: () {
-                      state.expanded
-                          ? bloc.add(CollapseNavigationRailEvent())
-                          : bloc.add(ExpandNavigationRailEvent());
-                    },
-                    icon: state.expanded
-                        ? const Icon(Icons.arrow_back_ios_new_outlined)
-                        : const Icon(Icons.arrow_forward_ios_outlined),
-                  )
-                ],
-              );
-            },
-          ),
-          title: Row(
-            children: [
-              Expanded(child: Container()),
-              Container(
-                height: 35,
-                width: 250,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: 'Поиск',
-                    filled: true,
-                    fillColor: const Color(0xFFF3F3F9),
-                    contentPadding: const EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        width: 4,
-                      ),
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.account_circle_outlined),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.fullscreen),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.dark_mode_outlined),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.logout),
-            ),
-          ],
-          elevation: 3,
-          surfaceTintColor: Colors.white,
-        ),*/
-        body: Row(
-          children: [
-            BlocBuilder<HomeBloc, HomeState>(
-              bloc: bloc,
-              builder: (context, state) {
-                return NavigationRail(
-                  backgroundColor: const Color(0xFFEDEDED),
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
+            appBar: WebBar(bloc: context.read<HomeBloc>()),
+            body: Row(
+              children: [
+                NavigationRail(
+                  backgroundColor: Theme.of(context).colorScheme.background,
                   extended: state.expanded,
                   labelType: NavigationRailLabelType.none,
                   elevation: 5,
                   useIndicator: false,
-                  selectedIndex: _selectedIndex,
+                  selectedIndex: state.selectedPage,
                   onDestinationSelected: (index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
+                    context.read<HomeBloc>().add(ChangePageEvent(pageIndex: index));
                   },
                   destinations: destinations
                       .map(
-                        (item) => NavigationRailDestination(
+                        (item) =>
+                        NavigationRailDestination(
                           icon: Icon(item.icon),
                           label: Text(item.label),
                           padding: const EdgeInsets.symmetric(vertical: 10),
                         ),
-                      )
+                  )
                       .toList(),
-                );
-              },
+                ),
+                Expanded(
+                  child: _screens[state.selectedPage],
+                ),
+              ],
             ),
-            Expanded(
-              child: _screens[_selectedIndex],
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

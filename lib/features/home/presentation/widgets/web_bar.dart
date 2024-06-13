@@ -1,12 +1,10 @@
-import 'dart:js';
-
-import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dart';
 import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WebBar extends StatelessWidget implements PreferredSizeWidget {
+
   final HomeBloc bloc;
 
   const WebBar({super.key, required this.bloc});

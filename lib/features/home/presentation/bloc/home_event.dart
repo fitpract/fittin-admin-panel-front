@@ -7,4 +7,12 @@ class ExpandNavigationRailEvent extends HomeEvent {}
 
 class CollapseNavigationRailEvent extends HomeEvent {}
 
+class ChangePageEvent extends HomeEvent {
+
+  final int pageIndex;
+
+  ChangePageEvent({required this.pageIndex});
+
+}
+
 

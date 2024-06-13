@@ -1,36 +1,28 @@
 part of 'home_bloc.dart';
 
-/*@immutable
-abstract class HomeState {}*/
-/*
-
-class HomeInitial extends HomeState {}
-
-class HomeExpandedState extends HomeState {
-
-  final bool isExpanded;
-
-  HomeExpandedState({required this.isExpanded});
-
-}*/
-
 class HomeState extends Equatable {
   final bool expanded;
+  final int selectedPage;
 
   const HomeState({
     required this.expanded,
+    required this.selectedPage,
   });
 
   factory HomeState.initial() {
-    return const HomeState(expanded: true);
+    return const HomeState(expanded: true, selectedPage: 0);
   }
 
   HomeState copyWith({
     bool? expanded,
+    int? selectedPage,
   }) {
-    return HomeState(expanded: expanded ?? this.expanded);
+    return HomeState(
+      expanded: expanded ?? this.expanded,
+      selectedPage: selectedPage ?? this.selectedPage,
+    );
   }
 
   @override
-  List<Object> get props => [expanded];
+  List<Object> get props => [expanded, selectedPage];
 }

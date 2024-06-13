@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -10,14 +9,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeState.initial()) {
     on<ExpandNavigationRailEvent>(_expandNavigationRailEvent);
     on<CollapseNavigationRailEvent>(_collapseNavigationRailEvent);
+    on<ChangePageEvent>(_changePageEvent);
   }
 
   _expandNavigationRailEvent(ExpandNavigationRailEvent event, Emitter<HomeState> emit) {
     emit(state.copyWith(expanded: true));
   }
 
-  _collapseNavigationRailEvent(event, emit) {
+  _collapseNavigationRailEvent(CollapseNavigationRailEvent event, Emitter<HomeState> emit) {
     emit(state.copyWith(expanded: false));
+  }
+
+  _changePageEvent(ChangePageEvent event, Emitter<HomeState> emit) {
+    emit(state.copyWith(selectedPage: event.pageIndex));
   }
 
 }
