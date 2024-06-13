@@ -33,3 +33,10 @@ const bodyLarge = TextStyle(
   fontSize: 15,
   color: AppColors.black,
 );
+
+const bodySmall = TextStyle(
+  fontFamily: 'Noto Sans',
+  fontWeight: FontWeight.w200,
+  fontSize: 12,
+  color: AppColors.nonActiveField,
+);

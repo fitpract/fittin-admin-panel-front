@@ -22,4 +22,6 @@ const lightColorScheme = ColorScheme(
   onBackground: AppColors.black,
   surface: AppColors.white,
   onSurface: AppColors.black,
+  outline: AppColors.activeField,
+  outlineVariant: AppColors.nonActiveField,
 );

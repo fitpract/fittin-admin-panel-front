@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dart';
 import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WebBar extends StatelessWidget implements PreferredSizeWidget {
-
   final HomeBloc bloc;
 
   const WebBar({super.key, required this.bloc});
@@ -40,6 +41,7 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                             height: 30,
                           ),
                         ),
+                  const SizedBox(width: 10),
                   IconButton(
                     onPressed: () {
                       state.expanded
@@ -54,47 +56,72 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 35,
-                    width: 250,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: 'Поиск',
-                        filled: true,
-                        fillColor: const Color(0xFFF3F3F9),
-                        contentPadding: const EdgeInsets.all(10),
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            width: 4,
-                          ),
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.account_circle_outlined),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.fullscreen),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.dark_mode_outlined),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.logout),
-                  ),
+                  _searchField(context),
+                  _iconButton(const Icon(Icons.account_circle_outlined), () {}),
+                  _iconButton(const Icon(Icons.fullscreen), () {}),
+                  _iconButton(const Icon(Icons.dark_mode_outlined), () {}),
+                  _iconButton(const Icon(Icons.logout), () {}),
                 ],
               )
             ],
           ),
         );
       },
+    );
+  }
+
+  Widget _searchField(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Container(
+        height: 35,
+        width: 200,
+        child: TextFormField(
+          decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.search,
+              size: 20,
+              color: Theme.of(context).colorScheme.outline,
+            ),
+            hintText: 'Поиск',
+            hintStyle: Theme.of(context).textTheme.bodySmall,
+            filled: true,
+            fillColor: const Color(0xFFF3F3F9),
+            contentPadding: const EdgeInsets.all(10),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(32),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Color(0xFFECECEC),
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(32),
+            ),
+            /*border: OutlineInputBorder(
+              */ /*borderSide: const BorderSide(
+                color: Color(0xFFECECEC),
+                width: 2,
+              ),*/ /*
+              borderRadius: BorderRadius.circular(32),
+            ),*/
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _iconButton(Icon icon, VoidCallback onPressed) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: icon,
+      ),
     );
   }
 
