@@ -7,7 +7,15 @@ part 'showcase_state.dart';
 
 class ShowcaseBloc extends Bloc<ShowcaseEvent, ShowcaseState> {
   ShowcaseBloc() : super(ShowcaseInitial()) {
-    on<ShowcaseEvent>((event, emit) {
-    });
+    on<AddNewElementEvent>(_addNewElementEvent);
+    on<DeleteElementEvent>(_deleteElementEvent);
+  }
+
+  _addNewElementEvent(event, emit) {
+
+  }
+
+  _deleteElementEvent(event, emit) {
+
   }
 }
