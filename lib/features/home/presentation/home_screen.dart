@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fittin_admin_panel/features/history/history_screen.dart';
 import 'package:fittin_admin_panel/features/showcase/showcase_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 @RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -84,10 +85,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   bool extended = false;
   double leadingWidth = 150;
+
   final List<Widget> _screens = [
     ShowcaseScreen(),
     HistoryScreen(),
-
   ];
 
   @override
@@ -97,10 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leadingWidth: leadingWidth,
         leading: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             extended
-                ? const Row(
+                ? SvgPicture.asset('lib/core/style/assets/fittin-large-logo.svg', semanticsLabel: 'Fittin', alignment: Alignment.centerLeft, /*width: 150,*/ height: 47,)
+            /*const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.logo_dev, size: 50),
@@ -112,14 +114,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ],
-                  )
-                : const Icon(Icons.logo_dev, size: 50),
+                  )*/
+                : Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: SvgPicture.asset('lib/core/style/assets/fittin-small-logo.svg', semanticsLabel: 'Fittin', alignment: Alignment.centerLeft, height: 30,),
+                ),
             IconButton(
               onPressed: () {
                 setState(() {
                   extended = !extended;
                   if (leadingWidth == 150) {
-                    leadingWidth = 250;
+                    leadingWidth = 200;
                   } else {
                     leadingWidth = 150;
                   }
