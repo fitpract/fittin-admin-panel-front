@@ -1,4 +1,5 @@
 import 'package:fittin_admin_panel/core/navigation/app_router.dart';
+import 'package:fittin_admin_panel/core/style/theme/light_theme.dart';
 import 'package:fittin_admin_panel/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -15,11 +16,7 @@ class _AdminPanelAppState extends State<AdminPanelApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFFF8200),
-        ),
-      ),
+      theme: createLightTheme(),
       routerConfig:  _appRouter.config(),
       debugShowCheckedModeBanner: false,
     );
