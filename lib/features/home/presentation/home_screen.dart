@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fittin_admin_panel/features/history/history_screen.dart';
 import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dart';
+import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_destination_icon.dart';
 import 'package:fittin_admin_panel/features/home/presentation/widgets/web_bar.dart';
 import 'package:fittin_admin_panel/features/showcase/showcase_screen.dart';
 import 'package:flutter/material.dart';
@@ -103,24 +104,39 @@ class _HomeScreenState extends State<HomeScreen> {
             body: Row(
               children: [
                 NavigationRail(
-                  backgroundColor: Theme.of(context).colorScheme.background,
+                  backgroundColor: Theme.of(context).colorScheme.surface,
+                  selectedIconTheme: IconThemeData(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  unselectedIconTheme: IconThemeData(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
                   extended: state.expanded,
                   labelType: NavigationRailLabelType.none,
                   elevation: 5,
+                  minWidth: 70,
+                  minExtendedWidth: 200,
                   useIndicator: false,
                   selectedIndex: state.selectedPage,
                   onDestinationSelected: (index) {
-                    context.read<HomeBloc>().add(ChangePageEvent(pageIndex: index));
+                    context
+                        .read<HomeBloc>()
+                        .add(ChangePageEvent(pageIndex: index));
                   },
                   destinations: destinations
                       .map(
-                        (item) =>
-                        NavigationRailDestination(
-                          icon: Icon(item.icon),
+                        (item) => NavigationRailDestination(
+                          icon: CustomDestinationIcon(
+                            icon: Icon(item.icon),
+                            selected: false,
+                          ),
+                          selectedIcon: CustomDestinationIcon(
+                            icon: Icon(item.icon),
+                            selected: true,
+                          ),
                           label: Text(item.label),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
                         ),
-                  )
+                      )
                       .toList(),
                 ),
                 Expanded(
