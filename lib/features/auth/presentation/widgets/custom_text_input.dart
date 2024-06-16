@@ -57,7 +57,7 @@ class CustomTextInput extends StatelessWidget {
                 borderSide: BorderSide(color: focusedErrorBorderColor),
               ),
               labelText: labelText,
-              labelStyle: bodyText1,
+              labelStyle: bodyLarge,
               floatingLabelBehavior: FloatingLabelBehavior.auto,
               contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
             ),

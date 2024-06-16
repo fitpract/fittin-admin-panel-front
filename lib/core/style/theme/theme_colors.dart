@@ -9,3 +9,19 @@ abstract class AppColors {
   static const Color activeField = Color(0xFF404040);
   static const Color nonActiveField = Color(0xFF8B8B8B);
 }
+
+const lightColorScheme = ColorScheme(
+  brightness: Brightness.light,
+  primary: AppColors.orangeButton,
+  onPrimary: AppColors.white,
+  secondary: AppColors.orangeActiveButton,
+  onSecondary: AppColors.white,
+  error: Colors.red,
+  onError: AppColors.white,
+  background: AppColors.whiteBackGround,
+  onBackground: AppColors.black,
+  surface: AppColors.white,
+  onSurface: AppColors.black,
+  outline: AppColors.activeField,
+  outlineVariant: AppColors.nonActiveField,
+);

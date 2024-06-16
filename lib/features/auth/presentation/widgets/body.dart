@@ -45,7 +45,7 @@ class Body extends StatelessWidget {
                       child: Text(
                         'Вход в систему',
                         textAlign: TextAlign.center,
-                        style: headline1,
+                        style: headlineLarge,
                       ),
                     ),
                     const UsernameInput(),
@@ -73,13 +73,13 @@ class Body extends StatelessWidget {
                             ),
                             const Padding(
                               padding: EdgeInsets.only(left: 9.4),
-                              child: Text("Запомнить", style: bodyText1),
+                              child: Text("Запомнить", style: bodyLarge),
                             ),
                           ],
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: const Text("Забыли пароль?", style: bodyText1,),
+                          child: const Text("Забыли пароль?", style: bodyLarge,),
                         ),
                       ],
                     ),

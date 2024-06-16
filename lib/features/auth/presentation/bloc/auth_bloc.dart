@@ -1,8 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
+import '../../domain/login_repository.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final LoginRepository loginRepository = LoginRepository();
+
   AuthBloc() : super(AuthState.initial()) {
     on<AuthUsernameChanged>(_onUsernameChanged);
     on<AuthPasswordChanged>(_onPasswordChanged);
@@ -36,9 +39,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } else {
       emit(state.copyWith(isSubmitting: true, isFailure: false));
       try {
-        await Future.delayed(const Duration(seconds: 2));
+        final response = await loginRepository.login(state.username, state.password);
+        print('JWT Token: ${response.jwt}');
         emit(state.copyWith(isSubmitting: false, isSuccess: true));
-      } catch (_) {
+      } catch (error) {
         emit(state.copyWith(isSubmitting: false, isFailure: true));
       }
     }
