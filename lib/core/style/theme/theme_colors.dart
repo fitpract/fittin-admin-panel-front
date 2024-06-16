@@ -9,6 +9,12 @@ abstract class AppColors {
   static const Color activeField = Color(0xFF404040);
   static const Color nonActiveField = Color(0xFF8B8B8B);
 }
+abstract class TextStyles{
+  static const TextStyle boldHeadingStyle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 19,
+  );
+}
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
