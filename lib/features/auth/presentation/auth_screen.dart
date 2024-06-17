@@ -13,7 +13,7 @@ class AuthScreen extends StatelessWidget {
     return BlocProvider<AuthBloc>(
       create: (context) => AuthBloc(),
       child: const Scaffold(
-        body: Body(),
+        body: AuthBody(),
       ),
     );
   }

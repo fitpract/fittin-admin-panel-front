@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
-import 'custom_text_input.dart';
+import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class PasswordInput extends StatelessWidget {
   const PasswordInput({super.key});

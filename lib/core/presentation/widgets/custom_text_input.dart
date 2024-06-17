@@ -1,7 +1,7 @@
 import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/style/theme/theme_text_styles.dart';
+import '../../style/theme/theme_text_styles.dart';
 
 class CustomTextInput extends StatelessWidget {
   final double borderRadius;

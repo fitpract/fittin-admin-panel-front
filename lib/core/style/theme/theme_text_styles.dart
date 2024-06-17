@@ -4,7 +4,7 @@ import 'theme_colors.dart';
 const textTheme = TextTheme(
   headlineLarge: headlineLarge,
   headlineMedium: headlineMedium,
-  headlineSmall: TextStyle(),
+  headlineSmall: headlineSmall,
   titleLarge: TextStyle(),
   titleMedium: TextStyle(),
   titleSmall: TextStyle(),
@@ -23,7 +23,14 @@ const headlineLarge = TextStyle(
 const headlineMedium = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
-  fontSize: 14,
+  fontSize: 20,
+  color: AppColors.black,
+);
+
+const headlineSmall = TextStyle(
+  fontFamily: 'Noto Sans',
+  fontWeight: FontWeight.w400,
+  fontSize: 18,
   color: AppColors.black,
 );
 

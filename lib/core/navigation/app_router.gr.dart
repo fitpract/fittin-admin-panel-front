@@ -20,7 +20,13 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const AuthScreen(),
       );
-    }
+    },
+    PasswordRecoveryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PasswordRecoveryScreen(),
+      );
+    },
   };
 }
 
@@ -34,6 +40,20 @@ class AuthRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AuthRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PasswordRecoveryScreen]
+class PasswordRecoveryRoute extends PageRouteInfo<void> {
+  const PasswordRecoveryRoute({List<PageRouteInfo>? children})
+      : super(
+          PasswordRecoveryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PasswordRecoveryRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

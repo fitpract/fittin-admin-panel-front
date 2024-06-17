@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
 import 'package:fittin_admin_panel/core/style/theme/theme_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +7,13 @@ import 'package:fittin_admin_panel/features/auth/presentation/widgets/password_i
 import 'package:fittin_admin_panel/features/auth/presentation/widgets/username_input.dart';
 import 'package:fittin_admin_panel/features/auth/presentation/widgets/auth_button.dart';
 
+import '../../../../core/navigation/app_router.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
 
-class Body extends StatelessWidget {
-  const Body({super.key});
+class AuthBody extends StatelessWidget {
+  const AuthBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +80,11 @@ class Body extends StatelessWidget {
                           ],
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            AutoRouter.of(context).navigate(
+                              const PasswordRecoveryRoute(),
+                            );
+                          },
                           child: const Text("Забыли пароль?", style: bodyLarge,),
                         ),
                       ],
