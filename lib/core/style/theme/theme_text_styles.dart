@@ -16,7 +16,7 @@ const textTheme = TextTheme(
 const headlineLarge = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w600,
-  fontSize: 29,
+  fontSize: 19,
   color: AppColors.black,
 );
 
@@ -30,7 +30,7 @@ const headlineMedium = TextStyle(
 const bodyLarge = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
-  fontSize: 15,
+  fontSize: 16,
   color: AppColors.black,
 );
 
