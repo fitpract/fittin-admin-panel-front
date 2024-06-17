@@ -39,10 +39,15 @@ dependencies:
   flutter_bloc: ^8.1.5
   flutter_svg: ^2.0.10+1
   equatable: ^2.0.5
+  dio: ^5.4.3+1
+  retrofit: ^4.1.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: ^8.1.0
+  json_serializable: ^6.8.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
