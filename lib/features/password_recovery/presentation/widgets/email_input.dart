@@ -6,7 +6,7 @@ import '../bloc/password_recovery_state.dart';
 import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class EmailInput extends StatelessWidget {
-  const EmailInput({Key? key}) : super(key: key);
+  const EmailInput({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class EmailInput extends StatelessWidget {
             onChanged: (email) {
               context.read<PasswordRecoveryBloc>().add(EmailChanged(email));
             },
-            //showWarning: state.showEmailWarning,
+            showWarning: state is EmailInputState ? state.showEmailWarning : false,
           ),
         );
       },

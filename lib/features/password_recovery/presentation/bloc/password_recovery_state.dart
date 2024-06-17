@@ -1,56 +1,41 @@
-import 'package:equatable/equatable.dart';
-
-abstract class PasswordRecoveryState extends Equatable {
-  const PasswordRecoveryState({this.isSubmitting = false});
-
-  final bool isSubmitting;
-
-  @override
-  List<Object?> get props => [isSubmitting];
-}
+abstract class PasswordRecoveryState {}
 
 class PasswordRecoveryInitial extends PasswordRecoveryState {}
 
 class EmailInputState extends PasswordRecoveryState {
+  final String email;
   final bool showEmailWarning;
+  final bool isSubmitting;
 
-  const EmailInputState({
-    bool isSubmitting = false,
+  EmailInputState({
+    this.email = '',
     this.showEmailWarning = false,
-  }) : super(isSubmitting: isSubmitting);
-
-  @override
-  List<Object?> get props => [showEmailWarning, isSubmitting];
+    this.isSubmitting = false,
+  });
 }
 
 class CodeInputState extends PasswordRecoveryState {
-  final String email;
+  final String code;
   final bool showCodeWarning;
+  final bool isSubmitting;
 
-  const CodeInputState(
-      this.email, {
-        bool isSubmitting = false,
-        this.showCodeWarning = false,
-      }) : super(isSubmitting: isSubmitting);
-
-  @override
-  List<Object?> get props => [email, showCodeWarning, isSubmitting];
+  CodeInputState({
+    this.code = '',
+    this.showCodeWarning = false,
+    this.isSubmitting = false,
+  });
 }
 
 class PasswordInputState extends PasswordRecoveryState {
-  final String email;
-  final String code;
+  final String password;
   final bool showPasswordWarning;
+  final bool isSubmitting;
 
-  const PasswordInputState({
-    required this.email,
-    required this.code,
-    bool isSubmitting = false,
+  PasswordInputState({
+    this.password = '',
     this.showPasswordWarning = false,
-  }) : super(isSubmitting: isSubmitting);
-
-  @override
-  List<Object?> get props => [email, code, showPasswordWarning, isSubmitting];
+    this.isSubmitting = false,
+  });
 }
 
 class PasswordRecoverySuccess extends PasswordRecoveryState {}
@@ -58,8 +43,5 @@ class PasswordRecoverySuccess extends PasswordRecoveryState {}
 class PasswordRecoveryFailure extends PasswordRecoveryState {
   final String error;
 
-  const PasswordRecoveryFailure(this.error);
-
-  @override
-  List<Object?> get props => [error];
+  PasswordRecoveryFailure(this.error);
 }

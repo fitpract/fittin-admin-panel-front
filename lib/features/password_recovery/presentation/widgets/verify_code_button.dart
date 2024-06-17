@@ -18,7 +18,7 @@ class VerifyCodeButton extends StatelessWidget {
             onPressed: () {
               if (state is CodeInputState && !state.isSubmitting) {
                 final recoveryBloc = context.read<PasswordRecoveryBloc>();
-                recoveryBloc.add(const VerifyCodeSubmitted());
+                recoveryBloc.add(VerifyCodeSubmitted());
               }
             },
             buttonText: 'Подтвердить код',

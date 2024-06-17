@@ -14,19 +14,18 @@ class PasswordRecoveryBloc extends Bloc<PasswordRecoveryEvent, PasswordRecoveryS
 
   void _onEmailChanged(EmailChanged event, Emitter<PasswordRecoveryState> emit) {
     emit(EmailInputState(
+      email: event.email,
       showEmailWarning: event.email.isEmpty,
     ));
   }
 
-  void _onSendCodeSubmitted(SendCodeSubmitted event, Emitter<PasswordRecoveryState> emit) async {
+  void _onSendCodeSubmitted(SendCodeSubmitted event, Emitter<PasswordRecoveryState> emit) {
     final currentState = state;
     if (currentState is EmailInputState) {
-      if (currentState.showEmailWarning) {
-        emit(const EmailInputState(
-          showEmailWarning: true,
-        ));
+      if (currentState.email.isEmpty) {
+        emit(EmailInputState(email: currentState.email, showEmailWarning: true));
       } else {
-        emit(const EmailInputState(isSubmitting: true));
+        emit(CodeInputState());
       }
     }
   }
@@ -35,55 +34,42 @@ class PasswordRecoveryBloc extends Bloc<PasswordRecoveryEvent, PasswordRecoveryS
     final currentState = state;
     if (currentState is CodeInputState) {
       emit(CodeInputState(
-        currentState.email,
+        code: event.code,
         showCodeWarning: event.code.isEmpty,
       ));
     }
   }
 
-  void _onVerifyCodeSubmitted(VerifyCodeSubmitted event, Emitter<PasswordRecoveryState> emit) async {
+  void _onVerifyCodeSubmitted(VerifyCodeSubmitted event, Emitter<PasswordRecoveryState> emit) {
     final currentState = state;
     if (currentState is CodeInputState) {
-      if (currentState.showCodeWarning) {
+      if (currentState.code.isEmpty) {
         emit(CodeInputState(
-          currentState.email,
+          code: currentState.code,
           showCodeWarning: true,
         ));
       } else {
-        emit(CodeInputState(
-          currentState.email,
-          isSubmitting: true,
-        ));
+        emit(PasswordInputState());
       }
     }
   }
 
   void _onPasswordChanged(PasswordChanged event, Emitter<PasswordRecoveryState> emit) {
-    final currentState = state;
-    if (currentState is PasswordInputState) {
-      emit(PasswordInputState(
-        email: currentState.email,
-        code: currentState.code,
-        showPasswordWarning: event.password.isEmpty,
-      ));
-    }
+    emit(PasswordInputState(
+      password: event.password,
+      showPasswordWarning: event.password.isEmpty,
+    ));
   }
 
-  void _onNewPasswordSubmitted(NewPasswordSubmitted event, Emitter<PasswordRecoveryState> emit) async {
+  void _onNewPasswordSubmitted(NewPasswordSubmitted event, Emitter<PasswordRecoveryState> emit) {
     final currentState = state;
     if (currentState is PasswordInputState) {
-      if (currentState.showPasswordWarning) {
+      if (currentState.password.isEmpty) {
         emit(PasswordInputState(
-          email: currentState.email,
-          code: currentState.code,
+          password: currentState.password,
           showPasswordWarning: true,
         ));
       } else {
-        emit(PasswordInputState(
-          email: currentState.email,
-          code: currentState.code,
-          isSubmitting: true,
-        ));
         emit(PasswordRecoverySuccess());
       }
     }

@@ -53,11 +53,6 @@ class PasswordRecoveryBody extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: headlineMedium,
                     ),
-                    const Text(
-                      'Введите email, который вы указывали при регестрации',
-                      textAlign: TextAlign.center,
-                      style: headlineSmall,
-                    ),
                     ..._buildContent(context, state),
                   ],
                 ),
@@ -75,6 +70,11 @@ class PasswordRecoveryBody extends StatelessWidget {
       case const (PasswordRecoveryInitial):
       case const (EmailInputState):
         return [
+          const Text(
+            'Введите email, который вы указывали при регестрации',
+            textAlign: TextAlign.center,
+            style: headlineSmall,
+          ),
           const EmailInput(), // Используем виджет для ввода email
           const SendCodeButton(),
           Padding(
@@ -94,7 +94,12 @@ class PasswordRecoveryBody extends StatelessWidget {
         ];
       case const (CodeInputState):
         return [
-          CodeInput(email: (state as CodeInputState).email),
+          const Text(
+            'На ваш email было выслано письмо с кодом подтверждения',
+            textAlign: TextAlign.center,
+            style: headlineSmall,
+          ),
+          CodeInput(),
           const VerifyCodeButton(), // Используем виджет для ввода кода
           Padding(
             padding: const EdgeInsets.only(bottom: 96),
@@ -113,10 +118,7 @@ class PasswordRecoveryBody extends StatelessWidget {
         ];
       case const (PasswordInputState):
         return [
-          NewPasswordInput(
-            email: (state as PasswordInputState).email,
-            code: state.code,
-          ), // Используем виджет для ввода нового пароля
+          NewPasswordInput(), // Используем виджет для ввода нового пароля
           const ChangePasswordButton(),
           Padding(
             padding: const EdgeInsets.only(bottom: 96),

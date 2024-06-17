@@ -6,10 +6,8 @@ import '../bloc/password_recovery_state.dart';
 import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class NewPasswordInput extends StatelessWidget {
-  final String email;
-  final String code;
 
-  const NewPasswordInput({super.key, required this.email, required this.code});
+  const NewPasswordInput({super.key});
 
   @override
   Widget build(BuildContext context) {

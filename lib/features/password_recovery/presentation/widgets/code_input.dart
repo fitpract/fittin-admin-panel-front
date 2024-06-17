@@ -6,9 +6,7 @@ import '../bloc/password_recovery_state.dart';
 import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class CodeInput extends StatelessWidget {
-  final String email;
-
-  const CodeInput({super.key, required this.email});
+  const CodeInput({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class CodeInput extends StatelessWidget {
             onChanged: (code) {
               context.read<PasswordRecoveryBloc>().add(CodeChanged(code));
             },
-            //showWarning: state.showCodeWarning,
+            showWarning: state is CodeInputState ? state.showCodeWarning : false,
           ),
         );
       },
