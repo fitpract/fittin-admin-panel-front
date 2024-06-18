@@ -1,4 +1,4 @@
-part of 'catalog_bloc.dart';
+part of 'category_bloc.dart';
 
 @immutable
 abstract class CatalogEvent {}
@@ -6,3 +6,6 @@ abstract class CatalogEvent {}
 class AddNewCatalogEvent extends CatalogEvent {}
 
 class SortCatalogEvent extends CatalogEvent{}
+
+class LoadCatalogEvent extends CatalogEvent{}
+
