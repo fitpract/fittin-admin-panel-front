@@ -5,7 +5,7 @@ import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dar
 import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_destination_icon.dart';
 import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_destination_title.dart';
 import 'package:fittin_admin_panel/features/home/presentation/widgets/web_bar.dart';
-import 'package:fittin_admin_panel/features/showcase/showcase_screen.dart';
+import 'package:fittin_admin_panel/features/showcase/presentation/showcase_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

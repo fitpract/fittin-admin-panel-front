@@ -8,7 +8,10 @@ abstract class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color activeField = Color(0xFF404040);
   static const Color nonActiveField = Color(0xFF8B8B8B);
+  static const Color editButtonColor = Color(0xFF34C38F);
+  static const Color deleteButtonColor = Color(0xFFF46A6A);
 }
+
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
