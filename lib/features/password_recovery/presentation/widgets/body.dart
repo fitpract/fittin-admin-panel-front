@@ -99,7 +99,7 @@ class PasswordRecoveryBody extends StatelessWidget {
             textAlign: TextAlign.center,
             style: headlineSmall,
           ),
-          CodeInput(),
+          const CodeInput(),
           const VerifyCodeButton(), // Используем виджет для ввода кода
           Padding(
             padding: const EdgeInsets.only(bottom: 96),
@@ -118,7 +118,7 @@ class PasswordRecoveryBody extends StatelessWidget {
         ];
       case const (PasswordInputState):
         return [
-          NewPasswordInput(), // Используем виджет для ввода нового пароля
+          const NewPasswordInput(), // Используем виджет для ввода нового пароля
           const ChangePasswordButton(),
           Padding(
             padding: const EdgeInsets.only(bottom: 96),

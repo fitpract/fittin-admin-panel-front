@@ -21,7 +21,7 @@ class NewPasswordInput extends StatelessWidget {
             onChanged: (password) {
               context.read<PasswordRecoveryBloc>().add(PasswordChanged(password));
             },
-            //showWarning: state.showPasswordWarning,
+            showWarning: state is PasswordInputState ? state.showPasswordWarning : false,
           ),
         );
       },

@@ -40,7 +40,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isSubmitting: true, isFailure: false));
       try {
         final response = await loginRepository.login(state.username, state.password);
-        print('JWT Token: ${response.jwt}');
         emit(state.copyWith(isSubmitting: false, isSuccess: true));
       } catch (error) {
         emit(state.copyWith(isSubmitting: false, isFailure: true));
