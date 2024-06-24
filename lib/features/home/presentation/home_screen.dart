@@ -30,6 +30,7 @@ class RouteDestination {
   });
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
 
   @override
@@ -38,6 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
       routes: const [
         ShowcaseTab(),
         HistoryTab(),
+        CategoryTab(),
+        ProductsTab(),
+        AddNewProductTab()
       ],
       builder: (context, child) {
     final tabsRouter = AutoTabsRouter.of(context);
