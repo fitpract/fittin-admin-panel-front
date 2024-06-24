@@ -3,7 +3,7 @@ import 'package:fittin_admin_panel/features/password_recovery/presentation/widge
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/password_recovery_bloc.dart';
+import 'bloc/resetPassword_bloc.dart';
 
 @RoutePage()
 class PasswordRecoveryScreen extends StatelessWidget {
@@ -13,7 +13,7 @@ class PasswordRecoveryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => PasswordRecoveryBloc(),
-      child: const Scaffold(
+      child: Scaffold(
         body: PasswordRecoveryBody(),
       ),
     );

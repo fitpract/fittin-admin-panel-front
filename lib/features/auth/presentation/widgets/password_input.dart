@@ -12,16 +12,20 @@ class PasswordInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 38, bottom: 25),
-          child: CustomTextInput(
-            labelText: 'Пароль',
-            obscureText: true,
-            onChanged: (password) {
-              context.read<AuthBloc>().add(AuthPasswordChanged(password));
-            },
-            showWarning: state.showPasswordWarning,
-          ),
+        String errorMessage = state.password.isEmpty
+            ? 'Заполните это поле'
+            : state.isFailure
+            ? 'Неправильные данные'
+            : '';
+
+        return CustomTextInput(
+          labelText: 'Пароль',
+          obscureText: true,
+          onChanged: (password) {
+            context.read<AuthBloc>().add(AuthPasswordChanged(password));
+          },
+          showWarning: state.showPasswordWarning || state.isFailure,
+          errorMessage: errorMessage,
         );
       },
     );

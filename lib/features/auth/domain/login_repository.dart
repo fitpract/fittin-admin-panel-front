@@ -1,20 +1,23 @@
-import '../data/service/api_client.dart';
-import '../data/dto/login_request.dart';
-import '../data/dto/login_response.dart';
-import 'package:dio/dio.dart';
+import '../../../core/utils/getIt.dart';
+import '../data/service/login_api_client.dart';
+import '../../../core/data/service/secure_storage.dart';
+import 'models/login_request.dart';
 
 class LoginRepository {
-  final ApiClient apiClient;
+  final LoginApiClient apiClient;
+  final SecureStorageService storageService;
 
-  static final LoginRepository _instance = LoginRepository._internal(ApiClient(Dio()));
+  LoginRepository({LoginApiClient? apiClient, SecureStorageService? storageService})
+      : apiClient = apiClient ?? getIt<LoginApiClient>(),
+        storageService = storageService ?? getIt<SecureStorageService>();
 
-  factory LoginRepository() {
-    return _instance;
-  }
-
-  LoginRepository._internal(this.apiClient);
-
-  Future<LoginResponse> login(String email, String password) {
-    return apiClient.login(LoginRequest(email: email, password: password));
+  Future<void> login(String email, String password) async {
+    try {
+      final response = await apiClient.login(LoginRequest(email: email, password: password));
+      await storageService.saveToken(response.access);
+    } catch (e) {
+      print('Error during login: $e');
+      rethrow;
+    }
   }
 }

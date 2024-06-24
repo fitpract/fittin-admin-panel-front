@@ -8,6 +8,7 @@ abstract class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color activeField = Color(0xFF404040);
   static const Color nonActiveField = Color(0xFF8B8B8B);
+  static const Color system = Color(0xFFF50000);
 }
 
 const lightColorScheme = ColorScheme(

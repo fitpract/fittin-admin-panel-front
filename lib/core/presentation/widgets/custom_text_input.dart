@@ -9,11 +9,12 @@ class CustomTextInput extends StatelessWidget {
   final Color cursorColor;
   final Color focusedBorderColor;
   final Color focusedErrorBorderColor;
-  final Color selectionColor;
+  final Color emptyNotification;
   final String labelText;
   final bool obscureText;
   final Function(String) onChanged;
   final bool showWarning;
+  final String errorMessage;
 
   const CustomTextInput({
     super.key,
@@ -21,12 +22,13 @@ class CustomTextInput extends StatelessWidget {
     this.borderColor = AppColors.nonActiveField,
     this.cursorColor = AppColors.nonActiveField,
     this.focusedBorderColor = AppColors.activeField,
-    this.focusedErrorBorderColor = Colors.red,
-    this.selectionColor = Colors.orangeAccent,
+    this.focusedErrorBorderColor = AppColors.system,
+    this.emptyNotification = AppColors.orangeButton,
     required this.labelText,
     this.obscureText = false,
     required this.onChanged,
     this.showWarning = false,
+    this.errorMessage = '',
   });
 
   @override
@@ -36,9 +38,7 @@ class CustomTextInput extends StatelessWidget {
       children: [
         Theme(
           data: Theme.of(context).copyWith(
-            textSelectionTheme: TextSelectionThemeData(
-              selectionColor: selectionColor,
-            ),
+            textSelectionTheme: const TextSelectionThemeData(),
           ),
           child: TextField(
             obscureText: obscureText,
@@ -57,24 +57,32 @@ class CustomTextInput extends StatelessWidget {
                 borderSide: BorderSide(color: focusedErrorBorderColor),
               ),
               labelText: labelText,
-              labelStyle: bodyLarge,
+              labelStyle: body,
               floatingLabelBehavior: FloatingLabelBehavior.auto,
-              contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              contentPadding:
+              const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
             ),
             cursorColor: cursorColor,
           ),
         ),
-        if (showWarning)
-          const Padding(
-            padding: EdgeInsets.only(top: 8.0),
+        SizedBox(
+          height: 50,
+          child: Visibility(
+            visible: showWarning,
             child: Row(
               children: [
-                Icon(Icons.error, color: Colors.orange, size: 20),
-                SizedBox(width: 8.0),
-                Text('Заполните это поле.', style: TextStyle(color: Colors.orange)),
+                Icon(Icons.error, color: emptyNotification, size: 20),
+                 Padding(
+                  padding: const EdgeInsets.only(left: 7),
+                  child: Text(
+                    errorMessage,
+                    style: emptyLabel,
+                  ),
+                ),
               ],
             ),
           ),
+        ),
       ],
     );
   }

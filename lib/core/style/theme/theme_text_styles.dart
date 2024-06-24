@@ -2,48 +2,70 @@ import 'package:flutter/material.dart';
 import 'theme_colors.dart';
 
 const textTheme = TextTheme(
-  headlineLarge: headlineLarge,
-  headlineMedium: headlineMedium,
-  headlineSmall: headlineSmall,
-  titleLarge: TextStyle(),
-  titleMedium: TextStyle(),
-  titleSmall: TextStyle(),
-  bodyLarge: bodyLarge,
+  headlineLarge: headline,
+  headlineSmall: subhead,
+  titleLarge: title,
+  titleMedium: title,
+  bodyLarge: body,
   bodyMedium: TextStyle(),
   bodySmall: TextStyle(),
+  labelLarge: label,
+  labelMedium: errorLabel,
+  labelSmall: emptyLabel,
 );
 
-const headlineLarge = TextStyle(
+const headline = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w600,
   fontSize: 29,
   color: AppColors.black,
 );
 
-const headlineMedium = TextStyle(
+const subhead = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
   fontSize: 20,
   color: AppColors.black,
 );
 
-const headlineSmall = TextStyle(
+const title = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
   fontSize: 18,
   color: AppColors.black,
 );
 
-const bodyLarge = TextStyle(
+const button = TextStyle(
+  fontFamily: 'Noto Sans',
+  fontWeight: FontWeight.w400,
+  fontSize: 18,
+  color: AppColors.white,
+);
+
+const body = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
   fontSize: 15,
   color: AppColors.black,
 );
 
-const bodySmall = TextStyle(
+const label = TextStyle(
   fontFamily: 'Noto Sans',
-  fontWeight: FontWeight.w200,
-  fontSize: 12,
-  color: AppColors.nonActiveField,
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  color: AppColors.black,
+);
+
+const errorLabel = TextStyle(
+  fontFamily: 'Noto Sans',
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  color: AppColors.system,
+);
+
+const emptyLabel = TextStyle(
+  fontFamily: 'Noto Sans',
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  color: AppColors.black,
 );

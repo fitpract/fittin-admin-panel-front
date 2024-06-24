@@ -4,10 +4,10 @@ part 'login_response.g.dart';
 
 @JsonSerializable()
 class LoginResponse {
-  final String jwt;
+  final String access;
 
   LoginResponse({
-    required this.jwt,
+    required this.access,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => _$LoginResponseFromJson(json);

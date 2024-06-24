@@ -25,29 +25,27 @@ class AuthBody extends StatelessWidget {
             body: Center(
               child: Container(
                 width: 460,
-                padding: const EdgeInsets.only(left: 45, right: 45),
+                height: 660,
+                padding: const EdgeInsets.symmetric(horizontal: 45),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     BoxShadow(
                       color: AppColors.black.withOpacity(0.08),
-                      blurRadius: 35
+                      blurRadius: 35,
                     ),
                   ],
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(
-                          top: 64,
-                          bottom:
-                              78),
+                     const Padding(
+                      padding: EdgeInsets.only(top: 69, bottom: 62),
                       child: Text(
                         'Вход в систему',
                         textAlign: TextAlign.center,
-                        style: headlineLarge,
+                        style: headline,
                       ),
                     ),
                     const UsernameInput(),
@@ -74,8 +72,8 @@ class AuthBody extends StatelessWidget {
                               ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 9.4),
-                              child: Text("Запомнить", style: bodyLarge),
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text("Запомнить", style: body),
                             ),
                           ],
                         ),
@@ -85,7 +83,10 @@ class AuthBody extends StatelessWidget {
                               const PasswordRecoveryRoute(),
                             );
                           },
-                          child: const Text("Забыли пароль?", style: bodyLarge,),
+                          child: const Text(
+                            "Забыли пароль?",
+                            style: body,
+                          ),
                         ),
                       ],
                     ),
@@ -100,3 +101,4 @@ class AuthBody extends StatelessWidget {
     );
   }
 }
+

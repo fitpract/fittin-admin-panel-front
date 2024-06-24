@@ -12,12 +12,18 @@ class UsernameInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
+        String errorMessage = state.username.isEmpty
+            ? 'Заполните это поле'
+            : state.isFailure
+            ? 'Неправильные данные'
+            : '';
         return CustomTextInput(
           labelText: 'Логин',
           onChanged: (username) {
             context.read<AuthBloc>().add(AuthUsernameChanged(username));
           },
-          showWarning: state.showUsernameWarning,
+          showWarning: state.showUsernameWarning || state.isFailure,
+          errorMessage: errorMessage,
         );
       },
     );

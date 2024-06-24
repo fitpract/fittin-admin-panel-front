@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/password_recovery_bloc.dart';
-import '../bloc/password_recovery_event.dart';
-import '../bloc/password_recovery_state.dart';
+import '../bloc/resetPassword_bloc.dart';
+import '../bloc/resetPassword_event.dart';
+import '../bloc/resetPassword_state.dart';
 import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class EmailInput extends StatelessWidget {
@@ -12,15 +12,12 @@ class EmailInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PasswordRecoveryBloc, PasswordRecoveryState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 63),
-          child: CustomTextInput(
-            labelText: 'Email',
-            onChanged: (email) {
-              context.read<PasswordRecoveryBloc>().add(EmailChanged(email));
-            },
-            showWarning: state is EmailInputState ? state.showEmailWarning : false,
-          ),
+        return CustomTextInput(
+          labelText: 'Email',
+          onChanged: (email) {
+            context.read<PasswordRecoveryBloc>().add(PasswordRecoveryEvent.emailChanged(email));
+          },
+          showWarning: state.showEmailWarning,
         );
       },
     );

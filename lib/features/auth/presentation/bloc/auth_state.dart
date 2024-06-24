@@ -22,7 +22,7 @@ class AuthState extends Equatable {
   });
 
   factory AuthState.initial() {
-    return AuthState(
+    return const AuthState(
       username: '',
       password: '',
       isSubmitting: false,

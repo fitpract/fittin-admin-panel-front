@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/password_recovery_bloc.dart';
-import '../bloc/password_recovery_event.dart';
-import '../bloc/password_recovery_state.dart';
+import '../bloc/resetPassword_bloc.dart';
+import '../bloc/resetPassword_event.dart';
+import '../bloc/resetPassword_state.dart';
 import '../../../../core/presentation/widgets/custom_button.dart';
 
 class SendCodeButton extends StatelessWidget {
@@ -13,16 +13,16 @@ class SendCodeButton extends StatelessWidget {
     return BlocBuilder<PasswordRecoveryBloc, PasswordRecoveryState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.only(top: 80, bottom: 45),
+          padding: const EdgeInsets.only(top: 30, bottom: 45),
           child: CustomButton(
             onPressed: () {
-              if (state is EmailInputState && !state.isSubmitting) {
+              if (!state.isSubmitting) {
                 final recoveryBloc = context.read<PasswordRecoveryBloc>();
-                recoveryBloc.add(SendCodeSubmitted());
+                recoveryBloc.add(PasswordRecoveryEvent.sendCodeButtonPressed(state.email));
               }
             },
             buttonText: 'Отправить код',
-            isLoading: state is EmailInputState && state.isSubmitting,
+            isLoading: state.isSubmitting,
           ),
         );
       },

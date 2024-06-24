@@ -14,7 +14,7 @@ class AuthButton extends StatelessWidget {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.only(top: 76, bottom: 120),
+          padding: const EdgeInsets.only(top: 67, bottom: 120),
           child: CustomButton(
             onPressed: () {
               final authBloc = context.read<AuthBloc>();

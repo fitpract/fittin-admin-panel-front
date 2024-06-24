@@ -8,10 +8,10 @@ part of 'login_response.dart';
 
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     LoginResponse(
-      jwt: json['access'] as String,
+      access: json['access'] as String,
     );
 
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
     <String, dynamic>{
-      'access': instance.jwt,
+      'access': instance.access,
     };

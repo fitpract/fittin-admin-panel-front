@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
 
+import '../../style/theme/theme_text_styles.dart';
+
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String buttonText;
@@ -37,8 +39,8 @@ class CustomButton extends StatelessWidget {
           foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
         ),
         child: isLoading
-            ? const CircularProgressIndicator()
-            : Text(buttonText),
+            ? const CircularProgressIndicator(color: AppColors.white,)
+            : Text(buttonText, style: button,),
       ),
     );
   }

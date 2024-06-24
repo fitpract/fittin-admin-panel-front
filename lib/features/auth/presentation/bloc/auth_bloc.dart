@@ -1,10 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/data/service/secure_storage.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 import '../../domain/login_repository.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginRepository loginRepository = LoginRepository();
+  final SecureStorageService storage = SecureStorageService();
 
   AuthBloc() : super(AuthState.initial()) {
     on<AuthUsernameChanged>(_onUsernameChanged);
@@ -39,12 +42,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } else {
       emit(state.copyWith(isSubmitting: true, isFailure: false));
       try {
-        final response = await loginRepository.login(state.username, state.password);
+        // Вызываем метод для входа, который может выбросить исключение DioException
+        await _performLogin(state.username, state.password);
         emit(state.copyWith(isSubmitting: false, isSuccess: true));
       } catch (error) {
-        emit(state.copyWith(isSubmitting: false, isFailure: true));
+        if (error is DioException && error.response?.statusCode == 401) {
+          emit(state.copyWith(isSubmitting: false, isFailure: true));
+        }
       }
     }
+  }
+
+  Future<void> _performLogin(String username, String password) async {
+    // Здесь вызывается метод loginRepository.login для выполнения запроса на сервер
+    await loginRepository.login(username, password);
   }
 
   void _onToggleRememberMe(ToggleRememberMe event, Emitter<AuthState> emit) {
