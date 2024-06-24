@@ -14,6 +14,7 @@ class Wrapper extends StatelessWidget{
     return MultiBlocProvider(providers: [
       BlocProvider(create: (context) => HomeBloc()),
       BlocProvider(create: (context) => CategoryBloc()),
+      BlocProvider(create: (context) => ProductBloc()),
     ], child: const AdminPanelApp());
   }
 }
