@@ -3,7 +3,10 @@ import 'package:fittin_admin_panel/core/style/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fittin_admin_panel/export_all_bloc.dart';
+
+import 'features/catalog/category/category_bloc/category_bloc.dart';
+import 'features/home/presentation/bloc/home_bloc.dart';
+import 'features/showcase/presentation/showcase_bloc/showcase_bloc.dart';
 
 
 class Wrapper extends StatelessWidget{
@@ -14,6 +17,7 @@ class Wrapper extends StatelessWidget{
     return MultiBlocProvider(providers: [
       BlocProvider(create: (context) => HomeBloc()),
       BlocProvider(create: (context) => CategoryBloc()),
+      BlocProvider(create: (context) => ShowcaseBloc()),
     ], child: const AdminPanelApp());
   }
 }

@@ -1,8 +1,13 @@
-import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
+
+import 'package:fittin_admin_panel/features/showcase/domain/app_banner.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/style/theme/theme_colors.dart';
+
 class ShowcaseElement extends StatefulWidget {
-  const ShowcaseElement({super.key});
+  const ShowcaseElement({super.key, required this.banner});
+
+  final AppBanner banner;
 
   @override
   State<ShowcaseElement> createState() => _ShowcaseElementState();
@@ -23,12 +28,12 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
           const Padding(padding: EdgeInsets.all(90)),
           Expanded(
               child: Text(
-                "id:\nтип:\nКатегория: ",
+                "${widget.banner.description}",
                 style: Theme.of(context).textTheme.bodyLarge,
               )),
           Expanded(
               child: Text(
-                "2202.12.23.23.12:14",
+                "${widget.banner.id}",
                 style: Theme.of(context).textTheme.bodyLarge,
               )),
           Expanded(
@@ -56,7 +61,7 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                     maximumSize: const Size(70, 70),
                     overlayColor:
                     Theme.of(context).colorScheme.onPrimary,
-                    side: BorderSide(
+                    side: const BorderSide(
                         width: 1.0,
                         color: AppColors.editButtonColor),
                     backgroundColor:
@@ -67,14 +72,14 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                     elevation: 0,
                   ),
                   onPressed: () {},
-                  child: Icon(Icons.edit, color: AppColors.editButtonColor,),
+                  child: const Icon(Icons.edit, color: AppColors.editButtonColor,),
                 ),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
                     overlayColor:
                     Theme.of(context).colorScheme.onPrimary,
-                    side: BorderSide(
+                    side: const BorderSide(
                         width: 1.0,
                         color: AppColors.deleteButtonColor),
                     backgroundColor:
@@ -85,7 +90,7 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                     elevation: 0,
                   ),
                   onPressed: () {},
-                  child: Icon(Icons.delete_outline, color: AppColors.deleteButtonColor,),
+                  child: const Icon(Icons.delete_outline, color: AppColors.deleteButtonColor,),
                 ),
               ],
             ),

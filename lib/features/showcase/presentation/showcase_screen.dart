@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
-import 'package:fittin_admin_panel/core/style/theme/theme_text_styles.dart';
+import 'package:dio/dio.dart';
+import 'package:fittin_admin_panel/features/showcase/presentation/showcase_bloc/showcase_bloc.dart';
 import 'package:fittin_admin_panel/features/showcase/presentation/widgets/showcase_element.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../data/service/app_banner_client.dart';
 
 @RoutePage()
 class ShowcaseScreen extends StatefulWidget {
@@ -13,13 +16,18 @@ class ShowcaseScreen extends StatefulWidget {
 }
 
 
-
 final List<String> list = ['Баннер', 'ещё элемент', 'и ещё элемент'];
 
 class _ShowcaseScreenState extends State<ShowcaseScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<ShowcaseBloc, ShowcaseState>(
+  builder: (context, state) {
+    final banners = state.banners;
+    if (state.isLoading){
+      return const Center(child: CircularProgressIndicator());
+    }
     return Container(
       padding: const EdgeInsets.only(top: 27, left: 31, right: 47),
       alignment: Alignment.topRight,
@@ -61,9 +69,9 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
                   3,
                   (int index) => MenuItemButton(
                     style: const ButtonStyle(),
-                    onPressed: () {
+                    onPressed: () async{
                       if (index == 0) {
-                        AutoRouter.of(context).pushNamed('/showcase/add_banner');
+                        AutoRouter.of(context).pushNamed('/showcase-tab/add_banner');
                       }
                     },
                     child: SizedBox(width: 165.0, child: Text(list[index])),
@@ -79,7 +87,7 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(padding: EdgeInsets.all(90)),
+                const Padding(padding: EdgeInsets.all(90)),
                 Expanded(
                     child: Text(
                   "Заголовок",
@@ -102,14 +110,16 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
           const Padding(padding: EdgeInsets.all(9)),
           Expanded(
             child: ListView.builder(
-              itemCount: 1,
+              itemCount: banners.length,
               itemBuilder: (context, index) {
-                return ShowcaseElement();
+                return ShowcaseElement(banner: banners[index],);
               },
             ),
           ),
         ],
       ),
     );
+  },
+);
   }
 }
