@@ -1,14 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fittin_admin_panel/core/navigation/app_router.dart';
-import 'package:fittin_admin_panel/features/history/history_screen.dart';
 import 'package:fittin_admin_panel/features/home/presentation/bloc/home_bloc.dart';
-import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_destination_icon.dart';
-import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_destination_title.dart';
+import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_navigation_rail/custom_navigation_rail.dart';
+import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_navigation_rail/custom_navigation_rail_destination.dart';
+import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_navigation_rail/custom_navigation_rail_dropdown_item.dart';
 import 'package:fittin_admin_panel/features/home/presentation/widgets/web_bar.dart';
-import 'package:fittin_admin_panel/features/showcase/showcase_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -16,18 +14,6 @@ class HomeScreen extends StatefulWidget {
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class RouteDestination {
-  final IconData icon;
-  final String label;
-  final bool hasDropdown;
-
-  const RouteDestination({
-    required this.icon,
-    required this.label,
-    required this.hasDropdown,
-  });
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -38,9 +24,14 @@ class _HomeScreenState extends State<HomeScreen> {
       routes: const [
         ShowcaseTab(),
         HistoryTab(),
+        DeeplinkTab(),
+        CatalogTab(),
+        MainRouteForCategory(),
+        MainRouteForProduct(),
+        StoresTab(),
       ],
       builder: (context, child) {
-    final tabsRouter = AutoTabsRouter.of(context);
+        final tabsRouter = AutoTabsRouter.of(context);
         return BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(),
           child: BlocBuilder<HomeBloc, HomeState>(
@@ -50,45 +41,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 appBar: WebBar(bloc: context.read<HomeBloc>()),
                 body: Row(
                   children: [
-                    NavigationRail(
-                      backgroundColor: Theme.of(context).colorScheme.surface,
-                      selectedIconTheme: IconThemeData(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      unselectedIconTheme: IconThemeData(
-                        color: Theme.of(context).colorScheme.outline,
-                      ),
-                      extended: state.expanded,
-                      labelType: NavigationRailLabelType.none,
-                      elevation: 5,
-                      minWidth: 70,
-                      minExtendedWidth: 200,
-                      useIndicator: false,
-                      selectedIndex: state.selectedPage,
+                    CustomNavigationRail(
+                      selectedIndex: tabsRouter.activeIndex,
                       onDestinationSelected: (index) {
                         context
                             .read<HomeBloc>()
                             .add(ChangePageEvent(pageIndex: index));
                         tabsRouter.setActiveIndex(index);
                       },
-                      destinations: destinations
-                          .map(
-                            (item) => NavigationRailDestination(
-                          icon: CustomDestinationIcon(
-                            icon: Icon(item.icon),
-                            selected: false,
-                          ),
-                          selectedIcon: CustomDestinationIcon(
-                            icon: Icon(item.icon),
-                            selected: true,
-                          ),
-                          label: CustomDestinationTitle(
-                            title: item.label,
-                            hasDropDown: item.hasDropdown,
-                          ),
-                        ),
-                      )
-                          .toList(),
+                      extended: state.expanded,
+                      destinationPadding: const EdgeInsets.symmetric(vertical: 1),
+                      destinations: destinations.map(
+                        (item) {
+                          if (item.hasDropdown) {
+                            return CustomNavigationRailDestination.withDropdown(
+                              icon: Icon(item.icon),
+                              label: item.label,
+                              dropdownItems: item.subRoutes
+                                  ?.map(
+                                    (subRoute) =>
+                                        CustomNavigationRailDropdownItem(
+                                            label: subRoute.label),
+                                  )
+                                  .toList(),
+                            );
+                          } else {
+                            return CustomNavigationRailDestination
+                                .withoutDropdown(
+                              icon: Icon(item.icon),
+                              label: item.label,
+                            );
+                          }
+                        },
+                      ).toList(),
                     ),
                     Expanded(
                       child: child,
@@ -103,62 +88,82 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  final destinations = const [
-    RouteDestination(
+  final destinations = [
+    RouteDestination.withoutDropdown(
       icon: Icons.shopping_cart,
       label: 'Витрина',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.history,
       label: 'Истории',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.open_in_new,
       label: 'Диплинк',
-      hasDropdown: true,
     ),
-    RouteDestination(
+    RouteDestination.withDropdown(
       icon: Icons.apps,
       label: 'Каталог',
-      hasDropdown: true,
+      subRoutes: [
+        SubRouteDestination(label: 'Категории'),
+        SubRouteDestination(label: 'Все товары'),
+      ],
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.shop,
       label: 'Магазины',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.shopping_basket,
       label: 'Заказы',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.email_outlined,
       label: 'Доставка',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.monetization_on_outlined,
       label: 'Способы оплаты',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.message_outlined,
       label: 'Отзывы',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.library_books_outlined,
       label: 'Лента и журналы',
-      hasDropdown: false,
     ),
-    RouteDestination(
+    RouteDestination.withoutDropdown(
       icon: Icons.settings_outlined,
       label: 'Настройки',
-      hasDropdown: true,
     ),
   ];
+}
 
+class RouteDestination {
+  final IconData icon;
+  final String label;
+  final bool hasDropdown;
+  final List<SubRouteDestination>? subRoutes;
+
+  RouteDestination.withDropdown({
+    required this.icon,
+    required this.label,
+    required this.subRoutes,
+  })  : hasDropdown = true,
+        assert(subRoutes != null && subRoutes.isNotEmpty);
+
+  RouteDestination.withoutDropdown({
+    required this.icon,
+    required this.label,
+  })  : hasDropdown = false,
+        subRoutes = null;
+}
+
+class SubRouteDestination {
+  final String label;
+
+  SubRouteDestination({
+    required this.label,
+  });
 }

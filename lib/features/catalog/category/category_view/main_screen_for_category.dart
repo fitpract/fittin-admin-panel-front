@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fittin_admin_panel/features/catalog/category/category_view/widgets/category/category_banner.dart';
 import 'package:fittin_admin_panel/features/catalog/category/category_view/widgets/top_panel/top_panel.dart';
 import 'package:flutter/material.dart';
 
-
+@RoutePage()
 class MainScreenForCategory extends StatefulWidget {
   const MainScreenForCategory({super.key});
 

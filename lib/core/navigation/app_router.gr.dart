@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CatalogTabPage(),
       );
     },
+    DeeplinkRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DeeplinkScreen(),
+      );
+    },
     DeeplinkTab.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -55,6 +61,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomeScreen(),
+      );
+    },
+    MainRouteForCategory.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainScreenForCategory(),
+      );
+    },
+    MainRouteForProduct.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainScreenForProduct(),
       );
     },
     OrdersTab.name: (routeData) {
@@ -93,6 +111,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ShowcaseTabPage(),
       );
     },
+    StoresRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const StoresScreen(),
+      );
+    },
     StoresTab.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -112,6 +136,20 @@ class CatalogTab extends PageRouteInfo<void> {
         );
 
   static const String name = 'CatalogTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DeeplinkScreen]
+class DeeplinkRoute extends PageRouteInfo<void> {
+  const DeeplinkRoute({List<PageRouteInfo>? children})
+      : super(
+          DeeplinkRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DeeplinkRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -201,6 +239,34 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MainScreenForCategory]
+class MainRouteForCategory extends PageRouteInfo<void> {
+  const MainRouteForCategory({List<PageRouteInfo>? children})
+      : super(
+          MainRouteForCategory.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRouteForCategory';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MainScreenForProduct]
+class MainRouteForProduct extends PageRouteInfo<void> {
+  const MainRouteForProduct({List<PageRouteInfo>? children})
+      : super(
+          MainRouteForProduct.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRouteForProduct';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [OrdersTabPage]
 class OrdersTab extends PageRouteInfo<void> {
   const OrdersTab({List<PageRouteInfo>? children})
@@ -280,6 +346,20 @@ class ShowcaseTab extends PageRouteInfo<void> {
         );
 
   static const String name = 'ShowcaseTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [StoresScreen]
+class StoresRoute extends PageRouteInfo<void> {
+  const StoresRoute({List<PageRouteInfo>? children})
+      : super(
+          StoresRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StoresRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

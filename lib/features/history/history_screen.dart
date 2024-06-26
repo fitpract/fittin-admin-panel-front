@@ -1,10 +1,9 @@
-
-
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:fittin_admin_panel/core/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
 
@@ -15,6 +14,13 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Text('HISTORY', textScaler: TextScaler.linear(2),);;
+    return Column(
+      children: [
+        Text(
+          'HISTORY',
+          textScaler: TextScaler.linear(2),
+        )
+      ],
+    );
   }
 }
