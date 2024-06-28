@@ -14,7 +14,8 @@ class ProductModel{
   late final int price;
   late final int count;
   late final double rating;
-  late final File image;
+  /// не получилось сгенерировать билд раннером для типа File
+  //late final File image;
   late final int sortingOrder;
 
   ProductModel({
@@ -26,7 +27,7 @@ class ProductModel{
     required this.price,
     required this.count,
     required this.rating,
-    required this.image,
+    //required this.image,
     required this.sortingOrder
   });
 

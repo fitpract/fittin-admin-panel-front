@@ -15,7 +15,7 @@ import '../../product_bloc/product_bloc.dart';
 @RoutePage()
 class AddNewAndRefactorProductScreen extends StatefulWidget {
   AddNewAndRefactorProductScreen({super.key});
-  final ProductModel productModel = ProductModel(sortingOrder: 0,rating: 0, image: File(""),count:2, id: 0, name: 'box', description: 'box for text', brand: 'BX', price:999, category: CategoryModel.nullCategory());
+  final ProductModel productModel = ProductModel(sortingOrder: 0,rating: 0,/* image: File("")*/count:2, id: 0, name: 'box', description: 'box for text', brand: 'BX', price:999, category: CategoryModel.nullCategory());
   @override
   State<AddNewAndRefactorProductScreen> createState() => _AddNewAndRefactorProductScreenState();
 }
@@ -55,7 +55,7 @@ class _AddNewAndRefactorProductScreenState extends State<AddNewAndRefactorProduc
             TextInputWidget(text: "Описание: ", controller: descriptionController),
             TextInputWidget(text: "Бренд: ", controller: brandController),
             //TODO: добавить выбор категории
-            GetFileLineWidget(file: productModel.image),
+            //GetFileLineWidget(file: productModel.image),
             NumInputWidget(text: "Количество товара: ", controller: countController),
             NumInputWidget(text: "Цена: ", controller: priceController,),
             NumInputWidget(text: "Порядок сотрировки: ", controller: sortingOrderController),

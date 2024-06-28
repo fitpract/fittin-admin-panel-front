@@ -18,7 +18,8 @@ class CreateNewProductEvent extends ProductEvent{
 
 class GetProductListEvent extends ProductEvent{
   late ProductModel productModel;
-  GetProductListEvent({required this.productModel});
+  /// закомментировал чтобы не было ошибки
+  GetProductListEvent(/*{required this.productModel}*/);
 }
 
 

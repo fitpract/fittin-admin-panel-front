@@ -21,12 +21,12 @@ class _MainScreenForProductState extends State<MainScreenForProduct> {
 
   @override
   void initState() {
-
     context.read<ProductBloc>().add(GetProductListEvent());
     super.initState();
   }
 
-  List<ProductModel> products;
+  /// добавил late
+  late List<ProductModel> products;
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -15,10 +15,30 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddBannerRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddBannerScreen(),
+      );
+    },
+    AddNewAndRefactorProductRoute.name: (routeData) {
+      final args = routeData.argsAs<AddNewAndRefactorProductRouteArgs>(
+          orElse: () => const AddNewAndRefactorProductRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AddNewAndRefactorProductScreen(key: args.key),
+      );
+    },
     CatalogTab.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CatalogTabPage(),
+      );
+    },
+    DeeplinkRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DeeplinkScreen(),
       );
     },
     DeeplinkTab.name: (routeData) {
@@ -55,6 +75,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomeScreen(),
+      );
+    },
+    MainRouteForCategory.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainScreenForCategory(),
+      );
+    },
+    MainRouteForProduct.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainScreenForProduct(),
       );
     },
     OrdersTab.name: (routeData) {
@@ -103,6 +135,50 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [AddBannerScreen]
+class AddBannerRoute extends PageRouteInfo<void> {
+  const AddBannerRoute({List<PageRouteInfo>? children})
+      : super(
+          AddBannerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddBannerRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddNewAndRefactorProductScreen]
+class AddNewAndRefactorProductRoute
+    extends PageRouteInfo<AddNewAndRefactorProductRouteArgs> {
+  AddNewAndRefactorProductRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AddNewAndRefactorProductRoute.name,
+          args: AddNewAndRefactorProductRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'AddNewAndRefactorProductRoute';
+
+  static const PageInfo<AddNewAndRefactorProductRouteArgs> page =
+      PageInfo<AddNewAndRefactorProductRouteArgs>(name);
+}
+
+class AddNewAndRefactorProductRouteArgs {
+  const AddNewAndRefactorProductRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AddNewAndRefactorProductRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
 /// [CatalogTabPage]
 class CatalogTab extends PageRouteInfo<void> {
   const CatalogTab({List<PageRouteInfo>? children})
@@ -112,6 +188,20 @@ class CatalogTab extends PageRouteInfo<void> {
         );
 
   static const String name = 'CatalogTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DeeplinkScreen]
+class DeeplinkRoute extends PageRouteInfo<void> {
+  const DeeplinkRoute({List<PageRouteInfo>? children})
+      : super(
+          DeeplinkRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DeeplinkRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -196,6 +286,34 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MainScreenForCategory]
+class MainRouteForCategory extends PageRouteInfo<void> {
+  const MainRouteForCategory({List<PageRouteInfo>? children})
+      : super(
+          MainRouteForCategory.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRouteForCategory';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MainScreenForProduct]
+class MainRouteForProduct extends PageRouteInfo<void> {
+  const MainRouteForProduct({List<PageRouteInfo>? children})
+      : super(
+          MainRouteForProduct.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRouteForProduct';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

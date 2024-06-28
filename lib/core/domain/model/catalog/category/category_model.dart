@@ -16,9 +16,13 @@ class CategoryModel{
     required this.image
   });
 
+  /// написал это чтобы не было ошибки
   factory CategoryModel.nullCategory() => CategoryModel(
-
+    id: 0,
+    name: "",
+    image: "",
   );
+
   factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CategoryModelToJson(this);

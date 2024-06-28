@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:fittin_admin_panel/core/data/service/product_API/api_product.dart';
 import 'package:fittin_admin_panel/core/navigation/app_router.dart';
 import 'package:fittin_admin_panel/core/style/theme/light_theme.dart';
-import 'package:fittin_admin_panel/features/catalog/product/product_data/product_data.dart';
+import 'package:fittin_admin_panel/core/data/service/product_data/product_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fittin_admin_panel/export_all_bloc.dart';
+
+import 'core/data/service/product_data/product_data.dart';
 
 
 final _dio = Dio();

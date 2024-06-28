@@ -23,6 +23,7 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               Row(
                 children: [
+                  if (state.expanded) const SizedBox(width: 30),
                   state.expanded
                       ? SvgPicture.asset(
                           'lib/core/style/assets/fittin-large-logo.svg',
@@ -39,7 +40,7 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                             height: 30,
                           ),
                         ),
-                  const SizedBox(width: 10),
+                  state.expanded ? const SizedBox(width: 40) : const SizedBox(width: 10),
                   IconButton(
                     onPressed: () {
                       state.expanded

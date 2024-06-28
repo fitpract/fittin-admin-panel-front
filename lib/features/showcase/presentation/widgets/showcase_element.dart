@@ -54,8 +54,8 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
-                    overlayColor:
-                    Theme.of(context).colorScheme.onPrimary,
+                    /// была ошибка
+                    //overlayColor: Theme.of(context).colorScheme.onPrimary,
                     side: BorderSide(
                         width: 1.0,
                         color: AppColors.editButtonColor),
@@ -72,8 +72,8 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
-                    overlayColor:
-                    Theme.of(context).colorScheme.onPrimary,
+                    /// была ошибка
+                    //overlayColor: Theme.of(context).colorScheme.onPrimary,
                     side: BorderSide(
                         width: 1.0,
                         color: AppColors.deleteButtonColor),

@@ -32,7 +32,8 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
                     Widget? child) {
                   return OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      overlayColor: Theme.of(context).colorScheme.background,
+                      /// была ошибка
+                      //overlayColor: Theme.of(context).colorScheme.background,
                       side: BorderSide(
                           width: 1.0,
                           color: Theme.of(context).colorScheme.primary),

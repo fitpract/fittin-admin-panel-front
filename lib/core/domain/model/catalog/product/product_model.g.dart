@@ -15,8 +15,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
           CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
       price: (json['price'] as num).toInt(),
       count: (json['count'] as num).toInt(),
-      rating: (json['rating'] as num).toInt(),
-      image: json['image'] as String,
+      rating: (json['rating'] as num).toDouble(),
       sortingOrder: (json['sortingOrder'] as num).toInt(),
     );
 
@@ -30,6 +29,5 @@ Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
       'price': instance.price,
       'count': instance.count,
       'rating': instance.rating,
-      'image': instance.image,
       'sortingOrder': instance.sortingOrder,
     };

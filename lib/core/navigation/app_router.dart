@@ -1,7 +1,16 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fittin_admin_panel/features/catalog/category/category_view/main_screen_for_category.dart';
+import 'package:fittin_admin_panel/features/catalog/product/product_view/add_new_and_refactor_product/add_new_and_refactor_product_screen.dart';
+import 'package:fittin_admin_panel/features/catalog/product/product_view/main_screen_for_product.dart';
+import 'package:fittin_admin_panel/features/deeplink/deeplink_screen.dart';
+//import 'package:fittin_admin_panel/features/deeplink/deeplink_screen.dart';
 import 'package:fittin_admin_panel/features/home/presentation/home_screen.dart';
 import 'package:fittin_admin_panel/features/showcase/presentation/showcase_screen.dart';
+import 'package:fittin_admin_panel/features/showcase/presentation/widgets/screens/add_banner_screen.dart';
+import 'package:fittin_admin_panel/features/showcase/presentation/showcase_screen.dart';
 import 'package:fittin_admin_panel/features/history/history_screen.dart';
+//import 'package:fittin_admin_panel/features/stores/stores_screen.dart';
+import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
@@ -41,6 +50,43 @@ class AppRouter extends _$AppRouter {
                 ),
               ],
             ),
+            AutoRoute(
+              path: 'deeplink-tab',
+              page: DeeplinkTab.page,
+              children: [
+                AutoRoute(
+                  path: 'deeplink',
+                  initial: true,
+                  page: DeeplinkRoute.page,
+                ),
+              ],
+            ),
+            AutoRoute(
+              path: 'catalog-tab',
+              page: CatalogTab.page,
+              children: [
+                AutoRoute(
+                  path: 'categories',
+                  initial: true,
+                  page: MainRouteForCategory.page,
+                ),
+                AutoRoute(
+                  path: 'all-products',
+                  page: MainRouteForProduct.page,
+                ),
+              ],
+            ),
+            /*AutoRoute(
+              path: 'stores-tab',
+              page: StoresTab.page,
+              children: [
+                AutoRoute(
+                  path: 'stores',
+                  initial: true,
+                  page: StoresRoute.page,
+                ),
+              ],
+            ),*/
           ],
         )
       ];
