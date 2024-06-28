@@ -8,22 +8,16 @@ part of 'category_model.dart';
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     CategoryModel(
-      id: (json['id'] as num).toInt(),
+      idParentCategory: (json['idParentCategory'] as num?)?.toInt(),
       name: json['name'] as String,
-      categoryId: (json['categoryId'] as num).toInt(),
-      price: (json['price'] as num).toInt(),
-      count: (json['count'] as num).toInt(),
-      rating: (json['rating'] as num).toInt(),
+      id: (json['id'] as num).toInt(),
       image: json['image'] as String,
     );
 
 Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'idParentCategory': instance.idParentCategory,
       'name': instance.name,
-      'categoryId': instance.categoryId,
-      'price': instance.price,
-      'count': instance.count,
-      'rating': instance.rating,
+      'id': instance.id,
       'image': instance.image,
     };

@@ -8,7 +8,7 @@ class CategoryInitial extends CategoryState {}
 class LoadingCategoryState extends CategoryState{}
 
 class CategoryReadyState extends CategoryState{
-  late final List<CategoryModel> category;
+  late final List<ProductModel> category;
 
   CategoryReadyState({required this.category});
 

@@ -26,7 +26,7 @@ class _CategoryBannerState extends State<CategoryBanner> {
                 width: 90,
                 child: Icon(Icons.person, size: 100,)
             ),
-            CategoryInfo(count: "", idCategory: "", name: ""),
+            CategoryInfo(count: "", idCategory: "", name: "", diplink: ""),
             const CategoryManageButton()
           ],
         ),
