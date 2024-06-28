@@ -21,6 +21,7 @@ class _MainScreenForProductState extends State<MainScreenForProduct> {
 
   @override
   void initState() {
+
     context.read<ProductBloc>().add(GetProductListEvent());
     super.initState();
   }
