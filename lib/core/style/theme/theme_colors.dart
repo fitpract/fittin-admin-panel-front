@@ -10,6 +10,7 @@ abstract class AppColors {
   static const Color nonActiveField = Color(0xFF8B8B8B);
   static const Color editButtonColor = Color(0xFF34C38F);
   static const Color deleteButtonColor = Color(0xFFF46A6A);
+  static const Color system = Color(0xFFF50000);
 }
 
 

@@ -29,6 +29,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: AddNewAndRefactorProductScreen(key: args.key),
       );
     },
+    AuthRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AuthScreen(),
+      );
+    },
     CatalogTab.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -93,6 +99,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OrdersTabPage(),
+      );
+    },
+    PasswordRecoveryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PasswordRecoveryScreen(),
       );
     },
     PaymentTab.name: (routeData) {
@@ -176,6 +188,20 @@ class AddNewAndRefactorProductRouteArgs {
   String toString() {
     return 'AddNewAndRefactorProductRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [AuthScreen]
+class AuthRoute extends PageRouteInfo<void> {
+  const AuthRoute({List<PageRouteInfo>? children})
+      : super(
+          AuthRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -328,6 +354,20 @@ class OrdersTab extends PageRouteInfo<void> {
         );
 
   static const String name = 'OrdersTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PasswordRecoveryScreen]
+class PasswordRecoveryRoute extends PageRouteInfo<void> {
+  const PasswordRecoveryRoute({List<PageRouteInfo>? children})
+      : super(
+          PasswordRecoveryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PasswordRecoveryRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
