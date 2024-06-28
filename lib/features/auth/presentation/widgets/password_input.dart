@@ -6,7 +6,7 @@ import '../bloc/auth_state.dart';
 import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class PasswordInput extends StatelessWidget {
-  const PasswordInput({super.key});
+  const PasswordInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,13 @@ class PasswordInput extends StatelessWidget {
 
         return CustomTextInput(
           labelText: 'Пароль',
+          initialValue: state.password,
           obscureText: true,
           onChanged: (password) {
             context.read<AuthBloc>().add(AuthPasswordChanged(password));
           },
-          showWarning: state.showPasswordWarning || state.isFailure,
+          showEmptyWarning: state.password.isEmpty,
+          showSystemWarning: state.isFailure,
           errorMessage: errorMessage,
         );
       },

@@ -6,7 +6,7 @@ import '../bloc/auth_state.dart';
 import '../../../../core/presentation/widgets/custom_text_input.dart';
 
 class UsernameInput extends StatelessWidget {
-  const UsernameInput({super.key});
+  const UsernameInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,12 @@ class UsernameInput extends StatelessWidget {
             : '';
         return CustomTextInput(
           labelText: 'Логин',
+          initialValue: state.username,
           onChanged: (username) {
             context.read<AuthBloc>().add(AuthUsernameChanged(username));
           },
-          showWarning: state.showUsernameWarning || state.isFailure,
+          showEmptyWarning: state.username.isEmpty,
+          showSystemWarning: state.isFailure,
           errorMessage: errorMessage,
         );
       },

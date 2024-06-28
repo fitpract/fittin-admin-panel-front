@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fittin_admin_panel/features/password_recovery/presentation/widgets/sendEmail_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
@@ -11,7 +12,7 @@ import 'change_password_button.dart';
 import 'code_input.dart';
 import 'email_input.dart';
 import 'new_password_input.dart';
-import 'send_code_button.dart';
+import 'sendCode_button.dart';
 
 class PasswordRecoveryBody extends StatelessWidget {
   const PasswordRecoveryBody({super.key});
@@ -25,7 +26,7 @@ class PasswordRecoveryBody extends StatelessWidget {
           child: Container(
             width: 460,
             height: 660,
-            padding: const EdgeInsets.only(left: 45, right: 45),
+            padding: const EdgeInsets.symmetric(horizontal: 45),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -54,119 +55,96 @@ class PasswordRecoveryBody extends StatelessWidget {
   List<Widget> _buildForm(BuildContext context, PasswordRecoveryState state) {
     if (state.isSuccess) {
       return _buildSuccessView();
+    } else if (!state.emailSent) {
+      return _buildEmailForm(context);
+    } else if (!state.codeSent) {
+      return _buildCodeForm(context);
     } else {
-      return _buildFormView(context, state);
+      return _buildPasswordForm(context);
     }
   }
 
-  List<Widget> _buildFormView(
-      BuildContext context, PasswordRecoveryState state) {
-    if (state.codeSent == false) {
-      return [
-        const Padding(
-          padding: EdgeInsets.only(top: 69, bottom: 35),
-          child: Text(
-            'Вход в систему',
-            textAlign: TextAlign.center,
-            style: headline,
-          ),
-        ),
-        const Text(
+  List<Widget> _buildEmailForm(BuildContext context) {
+    return [
+      const FormHeader(),
+      const Padding(
+        padding: EdgeInsets.only(bottom: 5),
+        child: Text(
           'Восстановления пароля',
           textAlign: TextAlign.center,
           style: subhead,
         ),
-        const Padding(
-          padding: EdgeInsets.only(bottom: 63),
-          child: Text(
-            'Введите email, который вы указывали при регистрации',
-            textAlign: TextAlign.center,
-            style: title,
-          ),
+      ),
+      const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 14),
+        child: Text(
+          'Введите email, который вы указывали при регистрации',
+          textAlign: TextAlign.center,
+          style: title,
         ),
-        const EmailInput(),
-        const SendCodeButton(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 96),
-          child: TextButton(
-              onPressed: () {
-                AutoRouter.of(context).navigate(
-                  const AuthRoute(),
-                );
-              },
-              child: const Text(
-                'Вернуться для входа в систему',
-                textAlign: TextAlign.center,
-                style: label,
-              )
-          ),
-        )
-      ];
-    } else {
-      return [
-        const Padding(
-          padding: EdgeInsets.only(top: 69, bottom: 35),
-          child: Text(
-            'Вход в систему',
-            textAlign: TextAlign.center,
-            style: headline,
-          ),
+      ),
+      const EmailInput(),
+      const SendEmailButton(),
+      _buildBackToAuthButton(context),
+    ];
+  }
+
+  List<Widget> _buildCodeForm(BuildContext context) {
+    return [
+      const FormHeader(),
+      const Padding(
+        padding: EdgeInsets.only(bottom: 5),
+        child: Text(
+          'Восстановления пароля',
+          textAlign: TextAlign.center,
+          style: subhead,
         ),
-        const Padding(
-          padding: EdgeInsets.only(bottom: 25),
-          child: Text(
-            'Восстановления пароля',
-            textAlign: TextAlign.center,
-            style: subhead,
-          ),
+      ),
+      const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 14),
+        child: Text(
+          'На ваш email было выслано письмо с кодом подтверждения',
+          textAlign: TextAlign.center,
+          style: title,
         ),
-        const CodeInput(),
-        const NewPasswordInput(),
-        const ChangePasswordButton(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 75),
-          child: TextButton(
-              onPressed: () {
-                AutoRouter.of(context).navigate(
-                  const AuthRoute(),
-                );
-              },
-              child: const Text(
-                'Вернуться для входа в систему',
-                textAlign: TextAlign.center,
-                style: label,
-              )
-          ),
-        )
-      ];
-    }
+      ),
+      const CodeInput(),
+      const SendCodeButton(),
+      _buildBackToAuthButton(context),
+    ];
+  }
+
+  List<Widget> _buildPasswordForm(BuildContext context) {
+    return [
+      const FormHeader(),
+      const Text(
+        'Восстановления пароля',
+        textAlign: TextAlign.center,
+        style: subhead,
+      ),
+      const NewPasswordInput(),
+      const ChangePasswordButton(),
+    ];
   }
 
   List<Widget> _buildSuccessView() {
     return [
-      const Padding(
-        padding: EdgeInsets.only(top: 69, bottom: 35),
-        child: Text(
-          'Вход в систему',
-          textAlign: TextAlign.center,
-          style: headline,
-        ),
-      ),
-      const Padding(
-        padding: EdgeInsets.only(bottom: 55),
-        child: Text(
-          'Восстановления пароля',
-          textAlign: TextAlign.center,
-          style: subhead,
-        ),
-      ),
+      const FormHeader(),
       const Text(
-        'Ваш пароль успешно изменен!',
+        'Восстановления пароля',
         textAlign: TextAlign.center,
-        style: title,
+        style: subhead,
       ),
       const Padding(
-        padding: EdgeInsets.only(top: 18, left: 40, right: 40),
+        padding: EdgeInsets.only(top: 55, bottom: 18),
+        child: Text(
+          'Ваш пароль успешно изменен!',
+          textAlign: TextAlign.center,
+          style: title,
+        ),
+      ),
+      const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 40),
         child: Text(
           'Теперь вы можете использовать новый пароль для входа.',
           textAlign: TextAlign.center,
@@ -176,5 +154,43 @@ class PasswordRecoveryBody extends StatelessWidget {
       const SizedBox(height: 12),
       const BackToAuthButton(),
     ];
+  }
+
+  Widget _buildBackToAuthButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 75),
+      child: TextButton(
+        onPressed: () {
+          AutoRouter.of(context).navigate(
+            const AuthRoute(),
+          );
+        },
+        child: const Text(
+          'Вернуться для входа в систему',
+          textAlign: TextAlign.center,
+          style: label,
+        ),
+      ),
+    );
+  }
+}
+
+class FormHeader extends StatelessWidget {
+  const FormHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(top: 69, bottom: 35),
+      child: Column(
+        children: [
+          Text(
+            'Вход в систему',
+            textAlign: TextAlign.center,
+            style: headline,
+          ),
+        ],
+      ),
+    );
   }
 }

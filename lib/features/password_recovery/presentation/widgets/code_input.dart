@@ -12,12 +12,22 @@ class CodeInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PasswordRecoveryBloc, PasswordRecoveryState>(
       builder: (context, state) {
-        return CustomTextInput(
-          labelText: 'Код',
-          onChanged: (code) {
-            context.read<PasswordRecoveryBloc>().add(PasswordRecoveryEvent.codeChanged(code));
-          },
-          showWarning: state.showCodeWarning,
+        String errorMessage = state.code.isEmpty
+            ? 'Заполните это поле'
+            : state.isFailure
+            ? 'Неправильный код'
+            : '';
+        return Padding(
+          padding: const EdgeInsets.only(top: 51),
+          child: CustomTextInput(
+            labelText: 'Введите код',
+            onChanged: (code) {
+              context.read<PasswordRecoveryBloc>().add(PasswordRecoveryEvent.codeChanged(code));
+            },
+            showEmptyWarning: state.code.isEmpty,
+            showSystemWarning: state.isFailure,
+            errorMessage: errorMessage,
+          ),
         );
       },
     );

@@ -14,20 +14,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthPasswordChanged>(_onPasswordChanged);
     on<AuthSubmitted>(_onSubmitted);
     on<ToggleRememberMe>(_onToggleRememberMe);
+    _loadRememberedData();
   }
 
-  void _onUsernameChanged(AuthUsernameChanged event, Emitter<AuthState> emit) {
+  void _onUsernameChanged(AuthUsernameChanged event, Emitter<AuthState> emit) async {
     emit(state.copyWith(
       username: event.username,
       showUsernameWarning: event.username.isEmpty,
     ));
+    if (state.rememberMe) {
+      await storage.write(key: 'username', value: event.username);
+    }
   }
 
-  void _onPasswordChanged(AuthPasswordChanged event, Emitter<AuthState> emit) {
+  void _onPasswordChanged(AuthPasswordChanged event, Emitter<AuthState> emit) async {
     emit(state.copyWith(
       password: event.password,
       showPasswordWarning: event.password.isEmpty,
     ));
+    if (state.rememberMe) {
+      await storage.write(key: 'password', value: event.password);
+    }
   }
 
   void _onSubmitted(AuthSubmitted event, Emitter<AuthState> emit) async {
@@ -42,7 +49,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } else {
       emit(state.copyWith(isSubmitting: true, isFailure: false));
       try {
-        // Вызываем метод для входа, который может выбросить исключение DioException
         await _performLogin(state.username, state.password);
         emit(state.copyWith(isSubmitting: false, isSuccess: true));
       } catch (error) {
@@ -54,11 +60,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _performLogin(String username, String password) async {
-    // Здесь вызывается метод loginRepository.login для выполнения запроса на сервер
     await loginRepository.login(username, password);
   }
 
-  void _onToggleRememberMe(ToggleRememberMe event, Emitter<AuthState> emit) {
-    emit(state.copyWith(rememberMe: !state.rememberMe));
+  void _onToggleRememberMe(ToggleRememberMe event, Emitter<AuthState> emit) async {
+    final newRememberMe = !state.rememberMe;
+    emit(state.copyWith(rememberMe: newRememberMe));
+
+    if (newRememberMe) {
+      await storage.write(key: 'username', value: state.username);
+      await storage.write(key: 'password', value: state.password);
+    } else {
+      await storage.delete(key: 'username');
+      await storage.delete(key: 'password');
+    }
+    await storage.write(key: 'rememberMe', value: newRememberMe.toString());
+  }
+
+  Future<void> _loadRememberedData() async {
+    final rememberMe = await storage.read(key: 'rememberMe');
+    if (rememberMe == 'true') {
+      final username = await storage.read(key: 'username') ?? '';
+      final password = await storage.read(key: 'password') ?? '';
+      emit(AuthState.initial(username: username, password: password, rememberMe: true));
+    }
   }
 }

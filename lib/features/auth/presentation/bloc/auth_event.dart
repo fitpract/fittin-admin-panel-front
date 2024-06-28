@@ -1,38 +1,12 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class AuthEvent extends Equatable {
-  const AuthEvent();
+part 'auth_event.freezed.dart';
 
-  @override
-  List<Object> get props => [];
-}
-
-class AuthUsernameChanged extends AuthEvent {
-  final String username;
-
-  const AuthUsernameChanged(this.username);
-
-  @override
-  List<Object> get props => [username];
-}
-
-class AuthPasswordChanged extends AuthEvent {
-  final String password;
-
-  const AuthPasswordChanged(this.password);
-
-  @override
-  List<Object> get props => [password];
-}
-
-class AuthSubmitted extends AuthEvent {
-  const AuthSubmitted();
-}
-
-class ShowAuthWarning extends AuthEvent {
-  const ShowAuthWarning();
-}
-
-class ToggleRememberMe extends AuthEvent {
-
+@freezed
+class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.authUsernameChanged(String username) = AuthUsernameChanged;
+  const factory AuthEvent.authPasswordChanged(String password) = AuthPasswordChanged;
+  const factory AuthEvent.authSubmitted() = AuthSubmitted;
+  const factory AuthEvent.showAuthWarning() = ShowAuthWarning;
+  const factory AuthEvent.toggleRememberMe() = ToggleRememberMe;
 }

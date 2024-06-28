@@ -11,7 +11,7 @@ const textTheme = TextTheme(
   bodySmall: TextStyle(),
   labelLarge: label,
   labelMedium: errorLabel,
-  labelSmall: emptyLabel,
+  labelSmall: TextStyle(),
 );
 
 const headline = TextStyle(
@@ -57,13 +57,6 @@ const label = TextStyle(
 );
 
 const errorLabel = TextStyle(
-  fontFamily: 'Noto Sans',
-  fontWeight: FontWeight.w400,
-  fontSize: 14,
-  color: AppColors.system,
-);
-
-const emptyLabel = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
   fontSize: 14,

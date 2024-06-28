@@ -21,10 +21,13 @@ mixin _$PasswordRecoveryEvent {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,10 +35,13 @@ mixin _$PasswordRecoveryEvent {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,10 +49,13 @@ mixin _$PasswordRecoveryEvent {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,11 +64,16 @@ mixin _$PasswordRecoveryEvent {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,10 +81,13 @@ mixin _$PasswordRecoveryEvent {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,10 +95,13 @@ mixin _$PasswordRecoveryEvent {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,10 +193,13 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) {
     return emailChanged(email);
   }
@@ -187,10 +210,13 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) {
     return emailChanged?.call(email);
   }
@@ -201,10 +227,13 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -219,11 +248,16 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) {
     return emailChanged(this);
   }
@@ -234,10 +268,13 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) {
     return emailChanged?.call(this);
   }
@@ -248,10 +285,13 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -337,10 +377,13 @@ class _$CodeChangedImpl implements CodeChanged {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) {
     return codeChanged(code);
   }
@@ -351,10 +394,13 @@ class _$CodeChangedImpl implements CodeChanged {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) {
     return codeChanged?.call(code);
   }
@@ -365,10 +411,13 @@ class _$CodeChangedImpl implements CodeChanged {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) {
     if (codeChanged != null) {
@@ -383,11 +432,16 @@ class _$CodeChangedImpl implements CodeChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) {
     return codeChanged(this);
   }
@@ -398,10 +452,13 @@ class _$CodeChangedImpl implements CodeChanged {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) {
     return codeChanged?.call(this);
   }
@@ -412,10 +469,13 @@ class _$CodeChangedImpl implements CodeChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) {
     if (codeChanged != null) {
@@ -503,10 +563,13 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) {
     return passwordChanged(password);
   }
@@ -517,10 +580,13 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) {
     return passwordChanged?.call(password);
   }
@@ -531,10 +597,13 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -549,11 +618,16 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) {
     return passwordChanged(this);
   }
@@ -564,10 +638,13 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) {
     return passwordChanged?.call(this);
   }
@@ -578,10 +655,13 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -598,6 +678,196 @@ abstract class PasswordChanged implements PasswordRecoveryEvent {
   @JsonKey(ignore: true)
   _$$PasswordChangedImplCopyWith<_$PasswordChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConfirmPasswordChangedImplCopyWith<$Res> {
+  factory _$$ConfirmPasswordChangedImplCopyWith(
+          _$ConfirmPasswordChangedImpl value,
+          $Res Function(_$ConfirmPasswordChangedImpl) then) =
+      __$$ConfirmPasswordChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String confirmPassword});
+}
+
+/// @nodoc
+class __$$ConfirmPasswordChangedImplCopyWithImpl<$Res>
+    extends _$PasswordRecoveryEventCopyWithImpl<$Res,
+        _$ConfirmPasswordChangedImpl>
+    implements _$$ConfirmPasswordChangedImplCopyWith<$Res> {
+  __$$ConfirmPasswordChangedImplCopyWithImpl(
+      _$ConfirmPasswordChangedImpl _value,
+      $Res Function(_$ConfirmPasswordChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? confirmPassword = null,
+  }) {
+    return _then(_$ConfirmPasswordChangedImpl(
+      null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
+  const _$ConfirmPasswordChangedImpl(this.confirmPassword);
+
+  @override
+  final String confirmPassword;
+
+  @override
+  String toString() {
+    return 'PasswordRecoveryEvent.confirmPasswordChanged(confirmPassword: $confirmPassword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmPasswordChangedImpl &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, confirmPassword);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmPasswordChangedImplCopyWith<_$ConfirmPasswordChangedImpl>
+      get copyWith => __$$ConfirmPasswordChangedImplCopyWithImpl<
+          _$ConfirmPasswordChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String code) codeChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
+    required TResult Function() submitEmail,
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
+        changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
+  }) {
+    return confirmPasswordChanged(confirmPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String code)? codeChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
+    TResult? Function()? submitEmail,
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
+        changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
+  }) {
+    return confirmPasswordChanged?.call(confirmPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(String code)? codeChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
+    TResult Function()? submitEmail,
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
+        changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (confirmPasswordChanged != null) {
+      return confirmPasswordChanged(confirmPassword);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(CodeChanged value) codeChanged,
+    required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
+    required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
+    required TResult Function(SendCodeButtonPressed value)
+        sendCodeButtonPressed,
+    required TResult Function(ChangePasswordButtonPressed value)
+        changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
+  }) {
+    return confirmPasswordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EmailChanged value)? emailChanged,
+    TResult? Function(CodeChanged value)? codeChanged,
+    TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
+    TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
+    TResult? Function(ChangePasswordButtonPressed value)?
+        changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
+  }) {
+    return confirmPasswordChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(CodeChanged value)? codeChanged,
+    TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
+    TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
+    TResult Function(ChangePasswordButtonPressed value)?
+        changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (confirmPasswordChanged != null) {
+      return confirmPasswordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConfirmPasswordChanged implements PasswordRecoveryEvent {
+  const factory ConfirmPasswordChanged(final String confirmPassword) =
+      _$ConfirmPasswordChangedImpl;
+
+  String get confirmPassword;
+  @JsonKey(ignore: true)
+  _$$ConfirmPasswordChangedImplCopyWith<_$ConfirmPasswordChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -641,10 +911,13 @@ class _$SubmitEmailImpl implements SubmitEmail {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) {
     return submitEmail();
   }
@@ -655,10 +928,13 @@ class _$SubmitEmailImpl implements SubmitEmail {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) {
     return submitEmail?.call();
   }
@@ -669,10 +945,13 @@ class _$SubmitEmailImpl implements SubmitEmail {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) {
     if (submitEmail != null) {
@@ -687,11 +966,16 @@ class _$SubmitEmailImpl implements SubmitEmail {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) {
     return submitEmail(this);
   }
@@ -702,10 +986,13 @@ class _$SubmitEmailImpl implements SubmitEmail {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) {
     return submitEmail?.call(this);
   }
@@ -716,10 +1003,13 @@ class _$SubmitEmailImpl implements SubmitEmail {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) {
     if (submitEmail != null) {
@@ -734,13 +1024,202 @@ abstract class SubmitEmail implements PasswordRecoveryEvent {
 }
 
 /// @nodoc
+abstract class _$$SendEmailButtonPressedImplCopyWith<$Res> {
+  factory _$$SendEmailButtonPressedImplCopyWith(
+          _$SendEmailButtonPressedImpl value,
+          $Res Function(_$SendEmailButtonPressedImpl) then) =
+      __$$SendEmailButtonPressedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email});
+}
+
+/// @nodoc
+class __$$SendEmailButtonPressedImplCopyWithImpl<$Res>
+    extends _$PasswordRecoveryEventCopyWithImpl<$Res,
+        _$SendEmailButtonPressedImpl>
+    implements _$$SendEmailButtonPressedImplCopyWith<$Res> {
+  __$$SendEmailButtonPressedImplCopyWithImpl(
+      _$SendEmailButtonPressedImpl _value,
+      $Res Function(_$SendEmailButtonPressedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+  }) {
+    return _then(_$SendEmailButtonPressedImpl(
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendEmailButtonPressedImpl implements SendEmailButtonPressed {
+  const _$SendEmailButtonPressedImpl(this.email);
+
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'PasswordRecoveryEvent.sendEmailButtonPressed(email: $email)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendEmailButtonPressedImpl &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendEmailButtonPressedImplCopyWith<_$SendEmailButtonPressedImpl>
+      get copyWith => __$$SendEmailButtonPressedImplCopyWithImpl<
+          _$SendEmailButtonPressedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String code) codeChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
+    required TResult Function() submitEmail,
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
+        changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
+  }) {
+    return sendEmailButtonPressed(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String code)? codeChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
+    TResult? Function()? submitEmail,
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
+        changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
+  }) {
+    return sendEmailButtonPressed?.call(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(String code)? codeChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
+    TResult Function()? submitEmail,
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
+        changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (sendEmailButtonPressed != null) {
+      return sendEmailButtonPressed(email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(CodeChanged value) codeChanged,
+    required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
+    required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
+    required TResult Function(SendCodeButtonPressed value)
+        sendCodeButtonPressed,
+    required TResult Function(ChangePasswordButtonPressed value)
+        changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
+  }) {
+    return sendEmailButtonPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EmailChanged value)? emailChanged,
+    TResult? Function(CodeChanged value)? codeChanged,
+    TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
+    TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
+    TResult? Function(ChangePasswordButtonPressed value)?
+        changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
+  }) {
+    return sendEmailButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(CodeChanged value)? codeChanged,
+    TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
+    TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
+    TResult Function(ChangePasswordButtonPressed value)?
+        changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (sendEmailButtonPressed != null) {
+      return sendEmailButtonPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SendEmailButtonPressed implements PasswordRecoveryEvent {
+  const factory SendEmailButtonPressed(final String email) =
+      _$SendEmailButtonPressedImpl;
+
+  String get email;
+  @JsonKey(ignore: true)
+  _$$SendEmailButtonPressedImplCopyWith<_$SendEmailButtonPressedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$SendCodeButtonPressedImplCopyWith<$Res> {
   factory _$$SendCodeButtonPressedImplCopyWith(
           _$SendCodeButtonPressedImpl value,
           $Res Function(_$SendCodeButtonPressedImpl) then) =
       __$$SendCodeButtonPressedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email});
+  $Res call({String email, String code});
 }
 
 /// @nodoc
@@ -756,11 +1235,16 @@ class __$$SendCodeButtonPressedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
+    Object? code = null,
   }) {
     return _then(_$SendCodeButtonPressedImpl(
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -769,14 +1253,16 @@ class __$$SendCodeButtonPressedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
-  const _$SendCodeButtonPressedImpl(this.email);
+  const _$SendCodeButtonPressedImpl(this.email, this.code);
 
   @override
   final String email;
+  @override
+  final String code;
 
   @override
   String toString() {
-    return 'PasswordRecoveryEvent.sendCodeButtonPressed(email: $email)';
+    return 'PasswordRecoveryEvent.sendCodeButtonPressed(email: $email, code: $code)';
   }
 
   @override
@@ -784,11 +1270,12 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendCodeButtonPressedImpl &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email);
+  int get hashCode => Object.hash(runtimeType, email, code);
 
   @JsonKey(ignore: true)
   @override
@@ -803,12 +1290,15 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) {
-    return sendCodeButtonPressed(email);
+    return sendCodeButtonPressed(email, code);
   }
 
   @override
@@ -817,12 +1307,15 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) {
-    return sendCodeButtonPressed?.call(email);
+    return sendCodeButtonPressed?.call(email, code);
   }
 
   @override
@@ -831,14 +1324,17 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) {
     if (sendCodeButtonPressed != null) {
-      return sendCodeButtonPressed(email);
+      return sendCodeButtonPressed(email, code);
     }
     return orElse();
   }
@@ -849,11 +1345,16 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) {
     return sendCodeButtonPressed(this);
   }
@@ -864,10 +1365,13 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) {
     return sendCodeButtonPressed?.call(this);
   }
@@ -878,10 +1382,13 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) {
     if (sendCodeButtonPressed != null) {
@@ -892,10 +1399,11 @@ class _$SendCodeButtonPressedImpl implements SendCodeButtonPressed {
 }
 
 abstract class SendCodeButtonPressed implements PasswordRecoveryEvent {
-  const factory SendCodeButtonPressed(final String email) =
+  const factory SendCodeButtonPressed(final String email, final String code) =
       _$SendCodeButtonPressedImpl;
 
   String get email;
+  String get code;
   @JsonKey(ignore: true)
   _$$SendCodeButtonPressedImplCopyWith<_$SendCodeButtonPressedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -908,7 +1416,7 @@ abstract class _$$ChangePasswordButtonPressedImplCopyWith<$Res> {
           $Res Function(_$ChangePasswordButtonPressedImpl) then) =
       __$$ChangePasswordButtonPressedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String code, String newPassword});
+  $Res call({String email, String newPassword});
 }
 
 /// @nodoc
@@ -925,17 +1433,12 @@ class __$$ChangePasswordButtonPressedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
-    Object? code = null,
     Object? newPassword = null,
   }) {
     return _then(_$ChangePasswordButtonPressedImpl(
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
               as String,
       null == newPassword
           ? _value.newPassword
@@ -948,19 +1451,16 @@ class __$$ChangePasswordButtonPressedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
-  const _$ChangePasswordButtonPressedImpl(
-      this.email, this.code, this.newPassword);
+  const _$ChangePasswordButtonPressedImpl(this.email, this.newPassword);
 
   @override
   final String email;
-  @override
-  final String code;
   @override
   final String newPassword;
 
   @override
   String toString() {
-    return 'PasswordRecoveryEvent.changePasswordButtonPressed(email: $email, code: $code, newPassword: $newPassword)';
+    return 'PasswordRecoveryEvent.changePasswordButtonPressed(email: $email, newPassword: $newPassword)';
   }
 
   @override
@@ -969,13 +1469,12 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
         (other.runtimeType == runtimeType &&
             other is _$ChangePasswordButtonPressedImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.newPassword, newPassword) ||
                 other.newPassword == newPassword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, code, newPassword);
+  int get hashCode => Object.hash(runtimeType, email, newPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -990,12 +1489,15 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
     required TResult Function(String email) emailChanged,
     required TResult Function(String code) codeChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
     required TResult Function() submitEmail,
-    required TResult Function(String email) sendCodeButtonPressed,
-    required TResult Function(String email, String code, String newPassword)
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
         changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
   }) {
-    return changePasswordButtonPressed(email, code, newPassword);
+    return changePasswordButtonPressed(email, newPassword);
   }
 
   @override
@@ -1004,12 +1506,15 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
     TResult? Function()? submitEmail,
-    TResult? Function(String email)? sendCodeButtonPressed,
-    TResult? Function(String email, String code, String newPassword)?
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
   }) {
-    return changePasswordButtonPressed?.call(email, code, newPassword);
+    return changePasswordButtonPressed?.call(email, newPassword);
   }
 
   @override
@@ -1018,14 +1523,17 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
     TResult Function(String email)? emailChanged,
     TResult Function(String code)? codeChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
     TResult Function()? submitEmail,
-    TResult Function(String email)? sendCodeButtonPressed,
-    TResult Function(String email, String code, String newPassword)?
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
         changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
     required TResult orElse(),
   }) {
     if (changePasswordButtonPressed != null) {
-      return changePasswordButtonPressed(email, code, newPassword);
+      return changePasswordButtonPressed(email, newPassword);
     }
     return orElse();
   }
@@ -1036,11 +1544,16 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(CodeChanged value) codeChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
     required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
     required TResult Function(SendCodeButtonPressed value)
         sendCodeButtonPressed,
     required TResult Function(ChangePasswordButtonPressed value)
         changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
   }) {
     return changePasswordButtonPressed(this);
   }
@@ -1051,10 +1564,13 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(CodeChanged value)? codeChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult? Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
   }) {
     return changePasswordButtonPressed?.call(this);
   }
@@ -1065,10 +1581,13 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(CodeChanged value)? codeChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
     TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
     TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
     TResult Function(ChangePasswordButtonPressed value)?
         changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
     required TResult orElse(),
   }) {
     if (changePasswordButtonPressed != null) {
@@ -1080,13 +1599,165 @@ class _$ChangePasswordButtonPressedImpl implements ChangePasswordButtonPressed {
 
 abstract class ChangePasswordButtonPressed implements PasswordRecoveryEvent {
   const factory ChangePasswordButtonPressed(
-          final String email, final String code, final String newPassword) =
+          final String email, final String newPassword) =
       _$ChangePasswordButtonPressedImpl;
 
   String get email;
-  String get code;
   String get newPassword;
   @JsonKey(ignore: true)
   _$$ChangePasswordButtonPressedImplCopyWith<_$ChangePasswordButtonPressedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BackButtonPressedImplCopyWith<$Res> {
+  factory _$$BackButtonPressedImplCopyWith(_$BackButtonPressedImpl value,
+          $Res Function(_$BackButtonPressedImpl) then) =
+      __$$BackButtonPressedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BackButtonPressedImplCopyWithImpl<$Res>
+    extends _$PasswordRecoveryEventCopyWithImpl<$Res, _$BackButtonPressedImpl>
+    implements _$$BackButtonPressedImplCopyWith<$Res> {
+  __$$BackButtonPressedImplCopyWithImpl(_$BackButtonPressedImpl _value,
+      $Res Function(_$BackButtonPressedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BackButtonPressedImpl implements BackButtonPressed {
+  const _$BackButtonPressedImpl();
+
+  @override
+  String toString() {
+    return 'PasswordRecoveryEvent.backButtonPressed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BackButtonPressedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String code) codeChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String confirmPassword) confirmPasswordChanged,
+    required TResult Function() submitEmail,
+    required TResult Function(String email) sendEmailButtonPressed,
+    required TResult Function(String email, String code) sendCodeButtonPressed,
+    required TResult Function(String email, String newPassword)
+        changePasswordButtonPressed,
+    required TResult Function() backButtonPressed,
+  }) {
+    return backButtonPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String code)? codeChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordChanged,
+    TResult? Function()? submitEmail,
+    TResult? Function(String email)? sendEmailButtonPressed,
+    TResult? Function(String email, String code)? sendCodeButtonPressed,
+    TResult? Function(String email, String newPassword)?
+        changePasswordButtonPressed,
+    TResult? Function()? backButtonPressed,
+  }) {
+    return backButtonPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(String code)? codeChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String confirmPassword)? confirmPasswordChanged,
+    TResult Function()? submitEmail,
+    TResult Function(String email)? sendEmailButtonPressed,
+    TResult Function(String email, String code)? sendCodeButtonPressed,
+    TResult Function(String email, String newPassword)?
+        changePasswordButtonPressed,
+    TResult Function()? backButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (backButtonPressed != null) {
+      return backButtonPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(CodeChanged value) codeChanged,
+    required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ConfirmPasswordChanged value)
+        confirmPasswordChanged,
+    required TResult Function(SubmitEmail value) submitEmail,
+    required TResult Function(SendEmailButtonPressed value)
+        sendEmailButtonPressed,
+    required TResult Function(SendCodeButtonPressed value)
+        sendCodeButtonPressed,
+    required TResult Function(ChangePasswordButtonPressed value)
+        changePasswordButtonPressed,
+    required TResult Function(BackButtonPressed value) backButtonPressed,
+  }) {
+    return backButtonPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EmailChanged value)? emailChanged,
+    TResult? Function(CodeChanged value)? codeChanged,
+    TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(SubmitEmail value)? submitEmail,
+    TResult? Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
+    TResult? Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
+    TResult? Function(ChangePasswordButtonPressed value)?
+        changePasswordButtonPressed,
+    TResult? Function(BackButtonPressed value)? backButtonPressed,
+  }) {
+    return backButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(CodeChanged value)? codeChanged,
+    TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(SubmitEmail value)? submitEmail,
+    TResult Function(SendEmailButtonPressed value)? sendEmailButtonPressed,
+    TResult Function(SendCodeButtonPressed value)? sendCodeButtonPressed,
+    TResult Function(ChangePasswordButtonPressed value)?
+        changePasswordButtonPressed,
+    TResult Function(BackButtonPressed value)? backButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (backButtonPressed != null) {
+      return backButtonPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BackButtonPressed implements PasswordRecoveryEvent {
+  const factory BackButtonPressed() = _$BackButtonPressedImpl;
 }

@@ -19,12 +19,15 @@ mixin _$PasswordRecoveryState {
   String get email => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String get confirmPassword => throw _privateConstructorUsedError;
   bool get showEmailWarning => throw _privateConstructorUsedError;
   bool get showCodeWarning => throw _privateConstructorUsedError;
   bool get showPasswordWarning => throw _privateConstructorUsedError;
+  bool get showConfirmPasswordWarning => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get isSuccess => throw _privateConstructorUsedError;
   bool get isFailure => throw _privateConstructorUsedError;
+  bool get emailSent => throw _privateConstructorUsedError;
   bool get codeSent => throw _privateConstructorUsedError;
   bool get passwordChange => throw _privateConstructorUsedError;
 
@@ -43,12 +46,15 @@ abstract class $PasswordRecoveryStateCopyWith<$Res> {
       {String email,
       String code,
       String password,
+      String confirmPassword,
       bool showEmailWarning,
       bool showCodeWarning,
       bool showPasswordWarning,
+      bool showConfirmPasswordWarning,
       bool isSubmitting,
       bool isSuccess,
       bool isFailure,
+      bool emailSent,
       bool codeSent,
       bool passwordChange});
 }
@@ -70,12 +76,15 @@ class _$PasswordRecoveryStateCopyWithImpl<$Res,
     Object? email = null,
     Object? code = null,
     Object? password = null,
+    Object? confirmPassword = null,
     Object? showEmailWarning = null,
     Object? showCodeWarning = null,
     Object? showPasswordWarning = null,
+    Object? showConfirmPasswordWarning = null,
     Object? isSubmitting = null,
     Object? isSuccess = null,
     Object? isFailure = null,
+    Object? emailSent = null,
     Object? codeSent = null,
     Object? passwordChange = null,
   }) {
@@ -92,6 +101,10 @@ class _$PasswordRecoveryStateCopyWithImpl<$Res,
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
       showEmailWarning: null == showEmailWarning
           ? _value.showEmailWarning
           : showEmailWarning // ignore: cast_nullable_to_non_nullable
@@ -104,6 +117,10 @@ class _$PasswordRecoveryStateCopyWithImpl<$Res,
           ? _value.showPasswordWarning
           : showPasswordWarning // ignore: cast_nullable_to_non_nullable
               as bool,
+      showConfirmPasswordWarning: null == showConfirmPasswordWarning
+          ? _value.showConfirmPasswordWarning
+          : showConfirmPasswordWarning // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -115,6 +132,10 @@ class _$PasswordRecoveryStateCopyWithImpl<$Res,
       isFailure: null == isFailure
           ? _value.isFailure
           : isFailure // ignore: cast_nullable_to_non_nullable
+              as bool,
+      emailSent: null == emailSent
+          ? _value.emailSent
+          : emailSent // ignore: cast_nullable_to_non_nullable
               as bool,
       codeSent: null == codeSent
           ? _value.codeSent
@@ -141,12 +162,15 @@ abstract class _$$PasswordRecoveryStateImplCopyWith<$Res>
       {String email,
       String code,
       String password,
+      String confirmPassword,
       bool showEmailWarning,
       bool showCodeWarning,
       bool showPasswordWarning,
+      bool showConfirmPasswordWarning,
       bool isSubmitting,
       bool isSuccess,
       bool isFailure,
+      bool emailSent,
       bool codeSent,
       bool passwordChange});
 }
@@ -166,12 +190,15 @@ class __$$PasswordRecoveryStateImplCopyWithImpl<$Res>
     Object? email = null,
     Object? code = null,
     Object? password = null,
+    Object? confirmPassword = null,
     Object? showEmailWarning = null,
     Object? showCodeWarning = null,
     Object? showPasswordWarning = null,
+    Object? showConfirmPasswordWarning = null,
     Object? isSubmitting = null,
     Object? isSuccess = null,
     Object? isFailure = null,
+    Object? emailSent = null,
     Object? codeSent = null,
     Object? passwordChange = null,
   }) {
@@ -188,6 +215,10 @@ class __$$PasswordRecoveryStateImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
       showEmailWarning: null == showEmailWarning
           ? _value.showEmailWarning
           : showEmailWarning // ignore: cast_nullable_to_non_nullable
@@ -200,6 +231,10 @@ class __$$PasswordRecoveryStateImplCopyWithImpl<$Res>
           ? _value.showPasswordWarning
           : showPasswordWarning // ignore: cast_nullable_to_non_nullable
               as bool,
+      showConfirmPasswordWarning: null == showConfirmPasswordWarning
+          ? _value.showConfirmPasswordWarning
+          : showConfirmPasswordWarning // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -211,6 +246,10 @@ class __$$PasswordRecoveryStateImplCopyWithImpl<$Res>
       isFailure: null == isFailure
           ? _value.isFailure
           : isFailure // ignore: cast_nullable_to_non_nullable
+              as bool,
+      emailSent: null == emailSent
+          ? _value.emailSent
+          : emailSent // ignore: cast_nullable_to_non_nullable
               as bool,
       codeSent: null == codeSent
           ? _value.codeSent
@@ -231,12 +270,15 @@ class _$PasswordRecoveryStateImpl implements _PasswordRecoveryState {
       {required this.email,
       required this.code,
       required this.password,
+      required this.confirmPassword,
       required this.showEmailWarning,
       required this.showCodeWarning,
       required this.showPasswordWarning,
+      required this.showConfirmPasswordWarning,
       required this.isSubmitting,
       required this.isSuccess,
       required this.isFailure,
+      required this.emailSent,
       required this.codeSent,
       required this.passwordChange});
 
@@ -247,11 +289,15 @@ class _$PasswordRecoveryStateImpl implements _PasswordRecoveryState {
   @override
   final String password;
   @override
+  final String confirmPassword;
+  @override
   final bool showEmailWarning;
   @override
   final bool showCodeWarning;
   @override
   final bool showPasswordWarning;
+  @override
+  final bool showConfirmPasswordWarning;
   @override
   final bool isSubmitting;
   @override
@@ -259,13 +305,15 @@ class _$PasswordRecoveryStateImpl implements _PasswordRecoveryState {
   @override
   final bool isFailure;
   @override
+  final bool emailSent;
+  @override
   final bool codeSent;
   @override
   final bool passwordChange;
 
   @override
   String toString() {
-    return 'PasswordRecoveryState(email: $email, code: $code, password: $password, showEmailWarning: $showEmailWarning, showCodeWarning: $showCodeWarning, showPasswordWarning: $showPasswordWarning, isSubmitting: $isSubmitting, isSuccess: $isSuccess, isFailure: $isFailure, codeSent: $codeSent, passwordChange: $passwordChange)';
+    return 'PasswordRecoveryState(email: $email, code: $code, password: $password, confirmPassword: $confirmPassword, showEmailWarning: $showEmailWarning, showCodeWarning: $showCodeWarning, showPasswordWarning: $showPasswordWarning, showConfirmPasswordWarning: $showConfirmPasswordWarning, isSubmitting: $isSubmitting, isSuccess: $isSuccess, isFailure: $isFailure, emailSent: $emailSent, codeSent: $codeSent, passwordChange: $passwordChange)';
   }
 
   @override
@@ -277,18 +325,26 @@ class _$PasswordRecoveryStateImpl implements _PasswordRecoveryState {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword) &&
             (identical(other.showEmailWarning, showEmailWarning) ||
                 other.showEmailWarning == showEmailWarning) &&
             (identical(other.showCodeWarning, showCodeWarning) ||
                 other.showCodeWarning == showCodeWarning) &&
             (identical(other.showPasswordWarning, showPasswordWarning) ||
                 other.showPasswordWarning == showPasswordWarning) &&
+            (identical(other.showConfirmPasswordWarning,
+                    showConfirmPasswordWarning) ||
+                other.showConfirmPasswordWarning ==
+                    showConfirmPasswordWarning) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isSuccess, isSuccess) ||
                 other.isSuccess == isSuccess) &&
             (identical(other.isFailure, isFailure) ||
                 other.isFailure == isFailure) &&
+            (identical(other.emailSent, emailSent) ||
+                other.emailSent == emailSent) &&
             (identical(other.codeSent, codeSent) ||
                 other.codeSent == codeSent) &&
             (identical(other.passwordChange, passwordChange) ||
@@ -301,12 +357,15 @@ class _$PasswordRecoveryStateImpl implements _PasswordRecoveryState {
       email,
       code,
       password,
+      confirmPassword,
       showEmailWarning,
       showCodeWarning,
       showPasswordWarning,
+      showConfirmPasswordWarning,
       isSubmitting,
       isSuccess,
       isFailure,
+      emailSent,
       codeSent,
       passwordChange);
 
@@ -323,12 +382,15 @@ abstract class _PasswordRecoveryState implements PasswordRecoveryState {
       {required final String email,
       required final String code,
       required final String password,
+      required final String confirmPassword,
       required final bool showEmailWarning,
       required final bool showCodeWarning,
       required final bool showPasswordWarning,
+      required final bool showConfirmPasswordWarning,
       required final bool isSubmitting,
       required final bool isSuccess,
       required final bool isFailure,
+      required final bool emailSent,
       required final bool codeSent,
       required final bool passwordChange}) = _$PasswordRecoveryStateImpl;
 
@@ -339,17 +401,23 @@ abstract class _PasswordRecoveryState implements PasswordRecoveryState {
   @override
   String get password;
   @override
+  String get confirmPassword;
+  @override
   bool get showEmailWarning;
   @override
   bool get showCodeWarning;
   @override
   bool get showPasswordWarning;
   @override
+  bool get showConfirmPasswordWarning;
+  @override
   bool get isSubmitting;
   @override
   bool get isSuccess;
   @override
   bool get isFailure;
+  @override
+  bool get emailSent;
   @override
   bool get codeSent;
   @override

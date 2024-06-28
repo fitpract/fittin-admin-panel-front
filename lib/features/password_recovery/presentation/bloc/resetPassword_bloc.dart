@@ -12,15 +12,19 @@ class PasswordRecoveryBloc
     on<EmailChanged>(_onEmailChanged);
     on<CodeChanged>(_onCodeChanged);
     on<PasswordChanged>(_onPasswordChanged);
+    on<ConfirmPasswordChanged>(_onConfirmPasswordChanged);
+    on<SendEmailButtonPressed>(_onSendEmailButtonPressed);
     on<SendCodeButtonPressed>(_onSendCodeButtonPressed);
     on<ChangePasswordButtonPressed>(_onChangePasswordButtonPressed);
+    on<BackButtonPressed>(_onBackButtonPressed);
   }
 
   void _onEmailChanged(
       EmailChanged event, Emitter<PasswordRecoveryState> emit) {
+    final emailWarning = !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(event.email);
     emit(state.copyWith(
       email: event.email,
-      showEmailWarning: event.email.isEmpty,
+      showEmailWarning: event.email.isEmpty || emailWarning,
     ));
   }
 
@@ -39,8 +43,16 @@ class PasswordRecoveryBloc
     ));
   }
 
-  void _onSendCodeButtonPressed(
-      SendCodeButtonPressed event, Emitter<PasswordRecoveryState> emit) async {
+  void _onConfirmPasswordChanged(
+      ConfirmPasswordChanged event, Emitter<PasswordRecoveryState> emit) {
+    emit(state.copyWith(
+      confirmPassword: event.confirmPassword,
+      showConfirmPasswordWarning: event.confirmPassword.isEmpty,
+    ));
+  }
+
+  void _onSendEmailButtonPressed(
+      SendEmailButtonPressed event, Emitter<PasswordRecoveryState> emit) async {
     final emailWarning = state.email.isEmpty;
 
     if (emailWarning) {
@@ -50,7 +62,26 @@ class PasswordRecoveryBloc
     } else {
       emit(state.copyWith(isSubmitting: true, isFailure: false));
       try {
-        await passwordResetRepository.sendResetPasswordCode(event.email);
+        await passwordResetRepository.sendEmail(event.email);
+        emit(state.copyWith(isSubmitting: false, emailSent: true));
+      } catch (e) {
+        emit(state.copyWith(isSubmitting: false, isFailure: true));
+      }
+    }
+  }
+
+  void _onSendCodeButtonPressed(
+      SendCodeButtonPressed event, Emitter<PasswordRecoveryState> emit) async {
+    final codeWarning = state.code.isEmpty;
+
+    if (codeWarning) {
+      emit(state.copyWith(
+        showCodeWarning: codeWarning,
+      ));
+    } else {
+      emit(state.copyWith(isSubmitting: true, isFailure: false));
+      try {
+        await passwordResetRepository.sendCode(event.email, event.code);
         emit(state.copyWith(isSubmitting: false, codeSent: true));
       } catch (e) {
         emit(state.copyWith(isSubmitting: false, isFailure: true));
@@ -69,15 +100,30 @@ class PasswordRecoveryBloc
         showPasswordWarning: passwordWarning,
       ));
     } else {
-      emit(state.copyWith(isSubmitting: true, isFailure: false));
-      try {
-        await passwordResetRepository.resetPassword(
-            event.email, event.code, event.newPassword);
-        emit(state.copyWith(
-            isSubmitting: false, isSuccess: true, passwordChange: true));
-      } catch (e) {
-        emit(state.copyWith(isSubmitting: false, isFailure: true));
+      if (state.password == state.confirmPassword) {
+        emit(state.copyWith(isSubmitting: true, isFailure: false));
+        try {
+          await passwordResetRepository.changePassword(
+              event.email, event.newPassword);
+          emit(state.copyWith(
+              isSubmitting: false, isSuccess: true, passwordChange: true));
+        } catch (e) {
+          emit(state.copyWith(isSubmitting: false, isFailure: true));
+        }
+      } else {
+        emit(state.copyWith(showConfirmPasswordWarning: true, showPasswordWarning: true, isSubmitting: false, isFailure: true));
       }
     }
   }
+
+  void _onBackButtonPressed(
+      BackButtonPressed event, Emitter<PasswordRecoveryState> emit) async {
+    emit(state.copyWith(
+        isSubmitting: false,
+        isSuccess: false,
+        passwordChange: false,
+        codeSent: false,
+        emailSent: false));
+  }
 }
+

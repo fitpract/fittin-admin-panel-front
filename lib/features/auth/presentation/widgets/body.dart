@@ -17,88 +17,84 @@ class AuthBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(),
-      child: BlocBuilder<AuthBloc, AuthState>(
-        builder: (context, state) {
-          return Scaffold(
-            body: Center(
-              child: Container(
-                width: 460,
-                height: 660,
-                padding: const EdgeInsets.symmetric(horizontal: 45),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.black.withOpacity(0.08),
-                      blurRadius: 35,
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Center(
+            child: Container(
+              width: 460,
+              height: 660,
+              padding: const EdgeInsets.symmetric(horizontal: 45),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.black.withOpacity(0.08),
+                    blurRadius: 35,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 69, bottom: 62),
+                    child: Text(
+                      'Вход в систему',
+                      textAlign: TextAlign.center,
+                      style: headline,
                     ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                     const Padding(
-                      padding: EdgeInsets.only(top: 69, bottom: 62),
-                      child: Text(
-                        'Вход в систему',
-                        textAlign: TextAlign.center,
-                        style: headline,
-                      ),
-                    ),
-                    const UsernameInput(),
-                    const PasswordInput(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Checkbox(
-                              checkColor: AppColors.activeField, // Цвет галочки
-                              fillColor: WidgetStateProperty.all<Color>(Colors.transparent), // Прозрачный фон
-                              value: state.rememberMe,
-                              onChanged: (value) {
-                                context.read<AuthBloc>().add(ToggleRememberMe());
+                  ),
+                  const UsernameInput(),
+                  const PasswordInput(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(
+                            checkColor: AppColors.activeField, // Цвет галочки
+                            fillColor: WidgetStateProperty.all<Color>(Colors.transparent), // Прозрачный фон
+                            value: state.rememberMe,
+                            onChanged: (value) {
+                              context.read<AuthBloc>().add(const ToggleRememberMe());
+                            },
+                            side: WidgetStateBorderSide.resolveWith(
+                                  (Set<WidgetState> states) {
+                                if (states.contains(WidgetState.selected)) {
+                                  return const BorderSide(color: AppColors.activeField, width: 2); // Цвет рамки при активации
+                                }
+                                return const BorderSide(color: AppColors.nonActiveField, width: 2,); // Цвет рамки по умолчанию
                               },
-                              side: WidgetStateBorderSide.resolveWith(
-                                    (Set<WidgetState> states) {
-                                  if (states.contains(WidgetState.selected)) {
-                                    return const BorderSide(color: AppColors.activeField, width: 2); // Цвет рамки при активации
-                                  }
-                                  return const BorderSide(color: AppColors.nonActiveField, width: 2,); // Цвет рамки по умолчанию
-                                },
-                              ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Text("Запомнить", style: body),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            AutoRouter.of(context).navigate(
-                              const PasswordRecoveryRoute(),
-                            );
-                          },
-                          child: const Text(
-                            "Забыли пароль?",
-                            style: body,
                           ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text("Запомнить", style: body),
+                          ),
+                        ],
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          AutoRouter.of(context).navigate(
+                            const PasswordRecoveryRoute(),
+                          );
+                        },
+                        child: const Text(
+                          "Забыли пароль?",
+                          style: body,
                         ),
-                      ],
-                    ),
-                    const AuthButton(),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  const AuthButton(),
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
-

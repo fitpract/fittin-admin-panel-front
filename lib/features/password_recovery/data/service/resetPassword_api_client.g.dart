@@ -21,7 +21,7 @@ class _ResetPasswordApiClient implements ResetPasswordApiClient {
   String? baseUrl;
 
   @override
-  Future<void> sendResetPasswordCode(String email) async {
+  Future<void> sendEmail(String email) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -33,7 +33,7 @@ class _ResetPasswordApiClient implements ResetPasswordApiClient {
     )
         .compose(
           _dio.options,
-          '/resetPassword/${email}/',
+          '/codeVerification/${email}/',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -45,9 +45,37 @@ class _ResetPasswordApiClient implements ResetPasswordApiClient {
   }
 
   @override
-  Future<void> resetPassword(
+  Future<void> sendCode(
     String email,
-    ResetPasswordRequest body,
+    CodeVerificationRequest body,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/codeVerification/${email}/',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<void> changePassword(
+    String email,
+    ChangePasswordRequest body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

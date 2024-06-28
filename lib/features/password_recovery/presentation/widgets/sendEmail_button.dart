@@ -5,8 +5,8 @@ import '../bloc/resetPassword_event.dart';
 import '../bloc/resetPassword_state.dart';
 import '../../../../core/presentation/widgets/custom_button.dart';
 
-class SendCodeButton extends StatelessWidget {
-  const SendCodeButton({super.key});
+class SendEmailButton extends StatelessWidget {
+  const SendEmailButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class SendCodeButton extends StatelessWidget {
             onPressed: () {
               if (!state.isSubmitting) {
                 final recoveryBloc = context.read<PasswordRecoveryBloc>();
-                recoveryBloc.add(PasswordRecoveryEvent.sendCodeButtonPressed(state.email));
+                recoveryBloc.add(PasswordRecoveryEvent.sendEmailButtonPressed(state.email));
               }
             },
-            buttonText: 'Отправить код',
+            buttonText: 'Отправить почту',
             isLoading: state.isSubmitting,
           ),
         );

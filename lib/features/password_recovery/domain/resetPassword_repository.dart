@@ -1,6 +1,7 @@
 import 'package:fittin_admin_panel/features/password_recovery/data/service/resetPassword_api_client.dart';
 import '../../../core/utils/getIt.dart';
-import 'models/resetPassword_request.dart';
+import 'models/changePassword_request.dart';
+import 'models/codeVerification_request.dart';
 
 class PasswordResetRepository {
   final ResetPasswordApiClient apiClient;
@@ -8,20 +9,29 @@ class PasswordResetRepository {
   PasswordResetRepository({ResetPasswordApiClient? apiClient})
       : apiClient = apiClient ?? getIt<ResetPasswordApiClient>();
 
-  Future<void> sendResetPasswordCode(String email) async {
+  Future<void> sendEmail(String email) async {
     try {
-      await apiClient.sendResetPasswordCode(email);
+      await apiClient.sendEmail(email);
     } catch (e) {
-      throw Exception('Error occurred while sending password reset code: $e');
+      throw Exception;
     }
   }
 
-  Future<void> resetPassword(String email, String code, String newPassword) async {
+  Future<void> sendCode(String email, String code) async {
     try {
-      final request = ResetPasswordRequest(code: code, newPassword: newPassword);
-      await apiClient.resetPassword(email, request);
+      final request = CodeVerificationRequest(code: code);
+      await apiClient.sendCode(email, request);
     } catch (e) {
-      throw Exception('Error occurred while resetting password: $e');
+      throw Exception;
+    }
+  }
+
+  Future<void> changePassword(String email, String password) async {
+    try {
+      final request = ChangePasswordRequest(password: password);
+      await apiClient.changePassword(email, request);
+    } catch (e) {
+      throw Exception;
     }
   }
 }
