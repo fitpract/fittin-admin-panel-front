@@ -4,27 +4,20 @@ part 'category_model.g.dart';
 
 @JsonSerializable()
 class CategoryModel{
-  CategoryModel? parentCategory;
+  final int? idParentCategory;
   late final String name;
-  late final int idCategory;
-  late final String diplink;
-  late final List<String> images;
-
+  late final int id;
+  late final String image;
 
   CategoryModel({
-    this.parentCategory,
+    this.idParentCategory,
     required this.name,
-    required this.idCategory,
-    required this.diplink,
-    required this.images
+    required this.id,
+    required this.image
   });
 
   factory CategoryModel.nullCategory() => CategoryModel(
-    parentCategory: null,
-    name: "",
-    idCategory: 0,
-    diplink: "",
-    images: [],
+
   );
   factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
 

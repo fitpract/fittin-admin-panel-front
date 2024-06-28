@@ -5,6 +5,8 @@ import 'package:fittin_admin_panel/core/domain/model/catalog/product/product_mod
 
 abstract class ProductRepository {
   Future<List<ProductModel>> sendFile(File file);
+  Future<void> sendNewProduct(ProductModel product);
+  Future<List<ProductModel>> getProducts();
 }
 
 class ProductRepositoryImpl extends ProductRepository {
@@ -15,5 +17,13 @@ class ProductRepositoryImpl extends ProductRepository {
   @override
   Future<List<ProductModel>> sendFile(File file) async {
     return await service.getProductsFromFile(file.readAsString() as String);
+  }
+  @override
+  Future<void> sendNewProduct(ProductModel product) async{
+    await service.sendNewProduct(product);
+  }
+
+  Future<List<ProductModel>> getProducts() async{
+    return await service.getProducts();
   }
 }

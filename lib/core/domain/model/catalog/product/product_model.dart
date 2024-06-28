@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fittin_admin_panel/core/domain/model/catalog/category/category_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'product_model.g.dart';
@@ -11,8 +13,8 @@ class ProductModel{
   late final CategoryModel category;
   late final int price;
   late final int count;
-  late final int rating;
-  late final List<String> images;
+  late final double rating;
+  late final File image;
   late final int sortingOrder;
 
   ProductModel({
@@ -24,7 +26,7 @@ class ProductModel{
     required this.price,
     required this.count,
     required this.rating,
-    required this.images,
+    required this.image,
     required this.sortingOrder
   });
 

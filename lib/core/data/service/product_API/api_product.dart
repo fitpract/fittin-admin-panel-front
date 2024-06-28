@@ -11,7 +11,11 @@ abstract class RestClientProduct{
   @GET("product")
   Future<List<ProductModel>> getProducts();
 
-  @POST("product")    //TODO: изменить запрос на верный
+  @PUT("product")    //TODO: изменить запрос на верный
   Future<List<ProductModel>> getProductsFromFile(String file);
+
+  @POST("product")
+  Future<void> sendNewProduct(ProductModel product);
+
 
 }

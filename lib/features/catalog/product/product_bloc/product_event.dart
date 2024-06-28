@@ -11,4 +11,14 @@ class LoadProductFromFileEvent extends ProductEvent{
   LoadProductFromFileEvent({required this.file});
 }
 
+class CreateNewProductEvent extends ProductEvent{
+  late final ProductModel productModel;
+  CreateNewProductEvent({required this.productModel});
+}
+
+class GetProductListEvent extends ProductEvent{
+  late ProductModel productModel;
+  GetProductListEvent({required this.productModel});
+}
+
 
