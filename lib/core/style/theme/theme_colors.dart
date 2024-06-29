@@ -11,6 +11,11 @@ abstract class AppColors {
   static const Color editButtonColor = Color(0xFF34C38F);
   static const Color deleteButtonColor = Color(0xFFF46A6A);
   static const Color system = Color(0xFFF50000);
+  static const Color darkBackground = Color(0xFF212636);
+  static const Color darkWebBarBackground = Color(0xFF262B3C);
+  static const Color darkNavPanelBackground = Color(0xFF2A3042);
+  static const Color darkButton = Color(0xFF2E6DFF);
+  static const Color darkTextColor = Color(0xFFA6B0CF);
 }
 
 
@@ -26,6 +31,22 @@ const lightColorScheme = ColorScheme(
   onBackground: AppColors.black,
   surface: AppColors.white,
   onSurface: AppColors.black,
+  outline: AppColors.activeField,
+  outlineVariant: AppColors.nonActiveField,
+);
+
+const darkColorScheme = ColorScheme(
+  brightness: Brightness.dark,
+  primary: AppColors.darkButton,
+  onPrimary: AppColors.white,
+  secondary: AppColors.darkTextColor,
+  onSecondary: AppColors.white,
+  error: Colors.red,
+  onError: AppColors.white,
+  background: AppColors.darkBackground,
+  onBackground: AppColors.black,
+  surface: AppColors.darkWebBarBackground,
+  onSurface: AppColors.darkTextColor,
   outline: AppColors.activeField,
   outlineVariant: AppColors.nonActiveField,
 );

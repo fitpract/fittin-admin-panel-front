@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fittin_admin_panel/features/auth/presentation/auth_screen.dart';
 import 'package:fittin_admin_panel/features/catalog/category/category_view/main_screen_for_category.dart';
 import 'package:fittin_admin_panel/features/catalog/product/product_view/add_new_and_refactor_product/add_new_and_refactor_product_screen.dart';
 import 'package:fittin_admin_panel/features/catalog/product/product_view/main_screen_for_product.dart';
 import 'package:fittin_admin_panel/features/deeplink/deeplink_screen.dart';
 //import 'package:fittin_admin_panel/features/deeplink/deeplink_screen.dart';
 import 'package:fittin_admin_panel/features/home/presentation/home_screen.dart';
+import 'package:fittin_admin_panel/features/password_recovery/presentation/password_recovery_screen.dart';
 import 'package:fittin_admin_panel/features/showcase/presentation/showcase_screen.dart';
 import 'package:fittin_admin_panel/features/showcase/presentation/widgets/screens/add_banner_screen.dart';
 import 'package:fittin_admin_panel/features/showcase/presentation/showcase_screen.dart';
@@ -18,13 +20,14 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        /*AutoRoute(
+        AutoRoute(
           path: '/authorization',
-          page: AuthorizationRoute.page,
-        ),*/
+          initial: true,
+          page: AuthRoute.page,
+        ),
         AutoRoute(
           path: '/',
-          initial: true,
+          //initial: true,
           page: HomeRoute.page,
           children: [
             AutoRoute(
