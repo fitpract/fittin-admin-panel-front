@@ -32,7 +32,7 @@ class PasswordRecoveryBody extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.black.withOpacity(0.08),
+                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.08),
                   blurRadius: 35,
                 ),
               ],

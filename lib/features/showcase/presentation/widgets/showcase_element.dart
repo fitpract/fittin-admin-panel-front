@@ -16,27 +16,27 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
     return Container(
       height: 114,
       color: Theme.of(context).colorScheme.onPrimary,
-      child:
-      Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Padding(padding: EdgeInsets.all(90)),
           Expanded(
               child: Text(
-                "id:\nтип:\nКатегория: ",
-                style: Theme.of(context).textTheme.bodyLarge,
-              )),
+            "id:\nтип:\nКатегория: ",
+            style: Theme.of(context).textTheme.bodyLarge,
+          )),
           Expanded(
               child: Text(
-                "2202.12.23.23.12:14",
-                style: Theme.of(context).textTheme.bodyLarge,
-              )),
+            "2202.12.23.23.12:14",
+            style: Theme.of(context).textTheme.bodyLarge,
+          )),
           Expanded(
               child: Text(
-                "Витрина ",
-                style: Theme.of(context).textTheme.bodyLarge,
-              )),
-          Expanded(child: Container(
+            "Витрина ",
+            style: Theme.of(context).textTheme.bodyLarge,
+          )),
+          Expanded(
+              child: Container(
             alignment: Alignment.centerLeft,
             child: Switch(
               value: light,
@@ -54,38 +54,46 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
+
                     /// была ошибка
                     //overlayColor: Theme.of(context).colorScheme.onPrimary,
                     side: BorderSide(
-                        width: 1.0,
-                        color: AppColors.editButtonColor),
-                    backgroundColor:
-                    Theme.of(context).colorScheme.onPrimary,
+                      width: 1.0,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     elevation: 0,
                   ),
                   onPressed: () {},
-                  child: Icon(Icons.edit, color: AppColors.editButtonColor,),
+                  child: Icon(
+                    Icons.edit,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
+
                     /// была ошибка
                     //overlayColor: Theme.of(context).colorScheme.onPrimary,
                     side: BorderSide(
-                        width: 1.0,
-                        color: AppColors.deleteButtonColor),
-                    backgroundColor:
-                    Theme.of(context).colorScheme.onPrimary,
+                      width: 1.0,
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     elevation: 0,
                   ),
                   onPressed: () {},
-                  child: Icon(Icons.delete_outline, color: AppColors.deleteButtonColor,),
+                  child: Icon(
+                    Icons.delete_outline,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),

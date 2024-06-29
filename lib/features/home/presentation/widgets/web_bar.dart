@@ -25,7 +25,9 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Row(
                   children: [
-                    state.expanded ? const SizedBox(width: 40) : const SizedBox(width: 12),
+                    state.expanded
+                        ? const SizedBox(width: 40)
+                        : const SizedBox(width: 12),
                     state.expanded
                         ? themeState.themeMode == ThemeMode.light
                             ? Image.asset(
@@ -39,10 +41,10 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                                 height: 30,
                               )
                         : Image.asset(
-                          'lib/core/style/assets/fittin-small-logo.png',
-                          alignment: Alignment.centerLeft,
-                          height: 30,
-                        ),
+                            'lib/core/style/assets/fittin-small-logo.png',
+                            alignment: Alignment.centerLeft,
+                            height: 30,
+                          ),
                     state.expanded
                         ? const SizedBox(width: 60)
                         : const SizedBox(width: 10),
@@ -52,9 +54,14 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                             ? bloc.add(CollapseNavigationRailEvent())
                             : bloc.add(ExpandNavigationRailEvent());
                       },
-                      icon: state.expanded
+                      icon: Icon(
+                        state.expanded
+                            ? Icons.arrow_back_ios_new_outlined
+                            : Icons.arrow_forward_ios_outlined,
+                      ),
+                      /*icon: state.expanded
                           ? const Icon(Icons.arrow_back_ios_new_outlined)
-                          : const Icon(Icons.arrow_forward_ios_outlined),
+                          : const Icon(Icons.arrow_forward_ios_outlined),*/
                     )
                   ],
                 ),
@@ -65,9 +72,14 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                         const Icon(Icons.account_circle_outlined), () {}),
                     _iconButton(const Icon(Icons.fullscreen), () {}),
                     _iconButton(
-                      themeState.themeMode == ThemeMode.light
+                      Icon(
+                        themeState.themeMode == ThemeMode.light
+                            ? Icons.dark_mode_outlined
+                            : Icons.light_mode_outlined,
+                      ),
+                      /*themeState.themeMode == ThemeMode.light
                           ? const Icon(Icons.dark_mode_outlined)
-                          : const Icon(Icons.light_mode_outlined),
+                          : const Icon(Icons.light_mode_outlined),*/
                       () {
                         themeState.themeMode == ThemeMode.light
                             ? context.read<ThemeBloc>().add(SetDarkThemeEvent())
