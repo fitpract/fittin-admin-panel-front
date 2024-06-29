@@ -53,7 +53,6 @@ const darkColorScheme = ColorScheme(
   primary: Color(0xFF2E6DFF),
   onPrimary: Color(0xFFFFFFFF),
   /// active buttons
-  //secondary: Color(0xFFA6B0CF), <- Добавить
   secondary: Color(0xFF34C38F),
   onSecondary: Color(0xFFFFFFFF),
   /// error messages
@@ -76,35 +75,3 @@ const darkColorScheme = ColorScheme(
   outlineVariant: Color(0xFFA6B0CF),
 );
 
-/*
-const lightColorScheme = ColorScheme(
-  brightness: Brightness.light,
-  primary: AppColors.orangeButton,
-  onPrimary: AppColors.white,
-  secondary: AppColors.orangeActiveButton,
-  onSecondary: AppColors.white,
-  error: Colors.red,
-  onError: AppColors.white,
-  background: AppColors.whiteBackGround,
-  onBackground: AppColors.black,
-  surface: AppColors.white,
-  onSurface: AppColors.black,
-  outline: AppColors.activeField,
-  outlineVariant: AppColors.nonActiveField,
-);
-
-const darkColorScheme = ColorScheme(
-  brightness: Brightness.dark,
-  primary: AppColors.darkButton,
-  onPrimary: AppColors.white,
-  secondary: AppColors.darkTextColor,
-  onSecondary: AppColors.white,
-  error: Colors.red,
-  onError: AppColors.white,
-  background: AppColors.darkBackground,
-  onBackground: AppColors.black,
-  surface: AppColors.darkWebBarBackground,
-  onSurface: AppColors.darkTextColor,
-  outline: AppColors.activeField,
-  outlineVariant: AppColors.nonActiveField,
-);*/

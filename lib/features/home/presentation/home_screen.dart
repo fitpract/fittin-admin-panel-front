@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       (item) {
                         if (item.hasDropdown) {
                           return CustomNavigationRailDestination.withDropdown(
-                            icon: Icon(item.icon),
+                            icon: item.icon,
                             label: item.label,
                             dropdownItems: item.subRoutes
                                 ?.map(
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         } else {
                           return CustomNavigationRailDestination
                               .withoutDropdown(
-                            icon: Icon(item.icon),
+                            icon: item.icon,
                             label: item.label,
                           );
                         }
