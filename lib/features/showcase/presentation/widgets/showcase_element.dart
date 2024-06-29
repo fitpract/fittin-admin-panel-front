@@ -15,7 +15,7 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
   Widget build(BuildContext context) {
     return Container(
       height: 114,
-      color: Theme.of(context).colorScheme.onPrimary,
+      color: Theme.of(context).colorScheme.surface,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,6 +41,7 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
             child: Switch(
               value: light,
               activeColor: Theme.of(context).colorScheme.primary,
+              inactiveThumbColor: Theme.of(context).colorScheme.outlineVariant,
               onChanged: (bool value) {
                 setState(() {
                   light = value;
@@ -54,14 +55,12 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
-
-                    /// была ошибка
-                    //overlayColor: Theme.of(context).colorScheme.onPrimary,
+                    overlayColor: Theme.of(context).colorScheme.secondary,
                     side: BorderSide(
                       width: 1.0,
                       color: Theme.of(context).colorScheme.secondary,
                     ),
-                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -76,14 +75,12 @@ class _ShowcaseElementState extends State<ShowcaseElement> {
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     maximumSize: const Size(70, 70),
-
-                    /// была ошибка
-                    //overlayColor: Theme.of(context).colorScheme.onPrimary,
+                    overlayColor: Theme.of(context).colorScheme.error,
                     side: BorderSide(
                       width: 1.0,
                       color: Theme.of(context).colorScheme.error,
                     ),
-                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),

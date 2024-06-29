@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-ButtonStyle rectangleButtonStyle(){
+ButtonStyle rectangleButtonStyle(Color color){
   return ButtonStyle(
-    /// закомментировал чтобы не было ошибки
-      /*shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              side: BorderSide(color: Colors.red)
-          )
-      )*/
+    shape: WidgetStateProperty.resolveWith<RoundedRectangleBorder>((states) {
+      return RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      );
+    }),
+    side: WidgetStateProperty.resolveWith<BorderSide>((states) {
+      return BorderSide(color: color, width: 2);
+    }),
   );
 }
