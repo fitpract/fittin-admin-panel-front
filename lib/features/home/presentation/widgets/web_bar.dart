@@ -59,9 +59,6 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                             ? Icons.arrow_back_ios_new_outlined
                             : Icons.arrow_forward_ios_outlined,
                       ),
-                      /*icon: state.expanded
-                          ? const Icon(Icons.arrow_back_ios_new_outlined)
-                          : const Icon(Icons.arrow_forward_ios_outlined),*/
                     )
                   ],
                 ),
@@ -69,17 +66,19 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     _searchField(context),
                     _iconButton(
-                        const Icon(Icons.account_circle_outlined), () {}),
-                    _iconButton(const Icon(Icons.fullscreen), () {}),
+                      Icons.account_circle_outlined,
+                      () {},
+                      Theme.of(context).colorScheme.onBackground,
+                    ),
                     _iconButton(
-                      Icon(
-                        themeState.themeMode == ThemeMode.light
-                            ? Icons.dark_mode_outlined
-                            : Icons.light_mode_outlined,
-                      ),
-                      /*themeState.themeMode == ThemeMode.light
-                          ? const Icon(Icons.dark_mode_outlined)
-                          : const Icon(Icons.light_mode_outlined),*/
+                      Icons.fullscreen,
+                      () {},
+                      Theme.of(context).colorScheme.onBackground,
+                    ),
+                    _iconButton(
+                      themeState.themeMode == ThemeMode.light
+                          ? Icons.dark_mode_outlined
+                          : Icons.light_mode_outlined,
                       () {
                         themeState.themeMode == ThemeMode.light
                             ? context.read<ThemeBloc>().add(SetDarkThemeEvent())
@@ -87,8 +86,13 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
                                 .read<ThemeBloc>()
                                 .add(SetLightThemeEvent());
                       },
+                      Theme.of(context).colorScheme.onBackground,
                     ),
-                    _iconButton(const Icon(Icons.logout), () {}),
+                    _iconButton(
+                      Icons.logout,
+                      () {},
+                      Theme.of(context).colorScheme.primary,
+                    ),
                   ],
                 )
               ],
@@ -103,53 +107,46 @@ class WebBar extends StatelessWidget implements PreferredSizeWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-        height: 35,
-        width: 200,
+        height: 45,
+        width: 180,
         child: TextFormField(
           decoration: InputDecoration(
             prefixIcon: Icon(
               Icons.search,
               size: 20,
-              color: Theme.of(context).colorScheme.outline,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
-            hintText: 'Поиск',
+            hintText: 'Поиск...',
             hintStyle: Theme.of(context).textTheme.bodySmall,
             filled: true,
-            fillColor: const Color(0xFFF3F3F9),
+            fillColor: Theme.of(context).colorScheme.surfaceContainer,
             contentPadding: const EdgeInsets.all(10),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.outline,
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(32),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Color(0xFFECECEC),
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.outline,
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(32),
             ),
-            /*border: OutlineInputBorder(
-              */ /*borderSide: const BorderSide(
-                color: Color(0xFFECECEC),
-                width: 2,
-              ),*/ /*
-              borderRadius: BorderRadius.circular(32),
-            ),*/
           ),
         ),
       ),
     );
   }
 
-  Widget _iconButton(Icon icon, VoidCallback onPressed) {
+  Widget _iconButton(IconData icon, VoidCallback onPressed, Color color) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: IconButton(
         onPressed: onPressed,
-        icon: icon,
+        icon: Icon(icon, color: color),
       ),
     );
   }

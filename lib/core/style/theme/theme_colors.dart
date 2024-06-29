@@ -61,7 +61,7 @@ const darkColorScheme = ColorScheme(
   onError: Color(0xFFFFFFFF),
   /// page bg
   background: Color(0xFF212636),
-  onBackground: Color(0xFF000000),
+  onBackground: Color(0xFFA6B0CF),
   /// nav panel items bg
   surface: Color(0xFF2A3042),
   /// app bar bg
