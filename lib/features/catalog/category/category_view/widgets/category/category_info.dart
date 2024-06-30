@@ -1,62 +1,63 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:clipboard/clipboard.dart';
 
+import '../../../../../../core/style/theme/theme_text_styles.dart'; // Для доступа к FlutterClipboard
 
 class CategoryInfo extends StatefulWidget {
-  CategoryInfo(
-      {super.key,
-      required this.name,
-      required this.idCategory,
-      required this.count,
-      required this.diplink});
+  const CategoryInfo({
+    super.key,
+    required this.name,
+    required this.idCategory,
+    required this.count,
+  });
 
-  late final String name;
-  late final String idCategory;
-  late final String count;
-  late final String diplink;
+  final String name;
+  final String idCategory;
+  final String count;
 
   @override
   State<StatefulWidget> createState() => _CategoryInfoState();
 }
 
 class _CategoryInfoState extends State<CategoryInfo> {
+  late final String name;
+  late final String idCategory;
+  late final String count;
+
   @override
   void initState() {
     super.initState();
     name = widget.name;
     idCategory = widget.idCategory;
     count = widget.count;
-    diplink = widget.diplink;
   }
-
-  late final String name;
-  late final String idCategory;
-  late final String count;
-  late final String diplink;
 
   @override
   Widget build(BuildContext context) {
-
-
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(name),
-        Text("ID категории: $idCategory"),
-        Text("Наименование в категории: $count"),
-        Row(
-          children: [
-            Text("Диплиник: $diplink"),
-            IconButton(
-                onPressed: () {
-                  FlutterClipboard.copy(diplink);
-                },
-                icon: Icon(
-                  Icons.copy_sharp,
-                  color: Theme.of(context).colorScheme.outline,
-                )),
-          ],
-        )
+        Text(
+          name,
+          textAlign: TextAlign.left,
+          style: subhead,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            "ID категории: $idCategory",
+            textAlign: TextAlign.left,
+            style: bodyMedium,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 3),
+          child: Text(
+            "Наименование в категории: $count",
+            textAlign: TextAlign.left,
+            style: bodyMedium,
+          ),
+        ),
       ],
     );
   }

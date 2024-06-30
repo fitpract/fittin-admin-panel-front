@@ -11,6 +11,8 @@ abstract class AppColors {
   static const Color editButtonColor = Color(0xFF34C38F);
   static const Color deleteButtonColor = Color(0xFFF46A6A);
   static const Color system = Color(0xFFF50000);
+  static const Color emptyBanner = Color(0xFFF3F3F9);
+  static const Color selector = Color(0xFF1967D2);
 }
 
 

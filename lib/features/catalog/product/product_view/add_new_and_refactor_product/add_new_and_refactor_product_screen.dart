@@ -4,7 +4,6 @@ import 'package:auto_route/annotations.dart';
 import 'package:fittin_admin_panel/core/domain/model/catalog/product/product_model.dart';
 import 'package:fittin_admin_panel/features/catalog/product/product_view/add_new_and_refactor_product/widgets/num_input_widget.dart';
 import 'package:fittin_admin_panel/features/catalog/product/product_view/add_new_and_refactor_product/widgets/text_input_widget.dart';
-import 'package:fittin_admin_panel/features/catalog/product/product_view/widgets/get_file_line_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

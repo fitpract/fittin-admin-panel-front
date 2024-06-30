@@ -1,4 +1,3 @@
-import 'dart:js_interop';
 
 import 'package:auto_route/annotations.dart';
 import 'package:fittin_admin_panel/core/domain/model/catalog/product/product_model.dart';
@@ -29,7 +28,7 @@ class _MainScreenForProductState extends State<MainScreenForProduct> {
   late List<ProductModel> products;
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
         padding: EdgeInsets.all(8.0),
       child: Column(
         children: [
