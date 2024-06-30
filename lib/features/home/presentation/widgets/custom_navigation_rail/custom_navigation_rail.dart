@@ -158,94 +158,97 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
   Widget _extendedNavigationRail() {
     return Container(
       color: backgroundColor ?? Theme.of(context).colorScheme.background,
+      alignment: Alignment.topCenter,
       width: 230,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: List.generate(widget.destinations.length, (index) {
-          final destination = widget.destinations[index];
-          final selected =
-              index == _toSelectedIndexFromTabRouter(widget.selectedIndex)[0];
-
-          return Padding(
-            padding: widget.destinationPadding,
-            child: Container(
-              color: index == hoverDestinationIndex
-                  ? hoverDestinationBackground
-                  : destinationBackground,
-              child: Column(
-                children: [
-                  MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    onEnter: (event) {
-                      _setHoverIndex(index);
-                      //_onMouseHover(event);
-                    },
-                    onExit: (event) {
-                      _setHoverIndex(-1);
-                      //_onMouseUnhover(event);
-                    },
-                    child: InkWell(
-                      onTap: () {
-                        widget.onDestinationSelected(
-                            _toSelectedIndexFromDestination(index));
-                        if (destination.hasDropdown) {
-                          _expandDestination(index);
-                          setState(() {
-                            expandedIndexes.update(index, (value) => 0);
-                          });
-                        }
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: List.generate(widget.destinations.length, (index) {
+            final destination = widget.destinations[index];
+            final selected =
+                index == _toSelectedIndexFromTabRouter(widget.selectedIndex)[0];
+        
+            return Padding(
+              padding: widget.destinationPadding,
+              child: Container(
+                color: index == hoverDestinationIndex
+                    ? hoverDestinationBackground
+                    : destinationBackground,
+                child: Column(
+                  children: [
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      onEnter: (event) {
+                        _setHoverIndex(index);
+                        //_onMouseHover(event);
                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Row(
-                              children: [
-                                _icon(selected, destination.icon),
-                                Text(
-                                  destination.label,
-                                  style: TextStyle(
-                                    color: iconsColor ?? Theme.of(context).colorScheme.onSurface,
+                      onExit: (event) {
+                        _setHoverIndex(-1);
+                        //_onMouseUnhover(event);
+                      },
+                      child: InkWell(
+                        onTap: () {
+                          widget.onDestinationSelected(
+                              _toSelectedIndexFromDestination(index));
+                          if (destination.hasDropdown) {
+                            _expandDestination(index);
+                            setState(() {
+                              expandedIndexes.update(index, (value) => 0);
+                            });
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              child: Row(
+                                children: [
+                                  _icon(selected, destination.icon),
+                                  Text(
+                                    destination.label,
+                                    style: TextStyle(
+                                      color: iconsColor ?? Theme.of(context).colorScheme.onSurface,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          if (destination.hasDropdown)
-                            expandedIndexes.containsKey(index)
-                                ? IconButton(
-                                    onPressed: () =>
-                                        _collapseDestination(index),
-                                    icon: Icon(Icons.expand_less, color: iconsColor ?? Theme.of(context).colorScheme.onSurface,),
-                                  )
-                                : IconButton(
-                                    onPressed: () => _expandDestination(index),
-                                    icon: Icon(Icons.expand_more, color: iconsColor ?? Theme.of(context).colorScheme.onSurface,),
-                                  ),
-                        ],
+                            if (destination.hasDropdown)
+                              expandedIndexes.containsKey(index)
+                                  ? IconButton(
+                                      onPressed: () =>
+                                          _collapseDestination(index),
+                                      icon: Icon(Icons.expand_less, color: iconsColor ?? Theme.of(context).colorScheme.onSurface,),
+                                    )
+                                  : IconButton(
+                                      onPressed: () => _expandDestination(index),
+                                      icon: Icon(Icons.expand_more, color: iconsColor ?? Theme.of(context).colorScheme.onSurface,),
+                                    ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  if (destination.hasDropdown &&
-                      destination.dropdownItems != null &&
-                      expandedIndexes.containsKey(index))
-                    DestinationDropdown(
-                      selectedIndex: expandedIndexes[index]!,
-                      dropdownItems: destination.dropdownItems!,
-                      onSelectItem: (int ind) {
-                        widget.onDestinationSelected(
-                            _toSelectedIndexFromDropdown(index, ind));
-                        setState(() {
-                          expandedIndexes.update(index, (value) => ind);
-                        });
-                      },
-                    ),
-                ],
+                    if (destination.hasDropdown &&
+                        destination.dropdownItems != null &&
+                        expandedIndexes.containsKey(index))
+                      DestinationDropdown(
+                        selectedIndex: expandedIndexes[index]!,
+                        dropdownItems: destination.dropdownItems!,
+                        onSelectItem: (int ind) {
+                          widget.onDestinationSelected(
+                              _toSelectedIndexFromDropdown(index, ind));
+                          setState(() {
+                            expandedIndexes.update(index, (value) => ind);
+                          });
+                        },
+                      ),
+                  ],
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       ),
     );
   }
