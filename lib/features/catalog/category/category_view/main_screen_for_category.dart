@@ -14,8 +14,8 @@ class MainScreenForCategory extends StatefulWidget {
 class _MainScreenForCategoryState extends State<MainScreenForCategory> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 31),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

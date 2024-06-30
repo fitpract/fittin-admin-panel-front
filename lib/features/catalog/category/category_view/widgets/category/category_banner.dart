@@ -1,3 +1,4 @@
+import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'category_info.dart';
@@ -14,21 +15,38 @@ class _CategoryBannerState extends State<CategoryBanner> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: Container(
-        height: 150,
-        color: Theme.of(context).colorScheme.surface,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(
-              height: 90,
-                width: 90,
-                child: Icon(Icons.person, size: 100,)
-            ),
-            CategoryInfo(count: "", idCategory: "", name: "", diplink: ""),
-            const CategoryManageButton()
-          ],
+        height: 249,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 35, left: 35, right: 35),
+          child: Stack(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 172,
+                    width: 147,
+                    color: AppColors.emptyBanner,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 50),
+                    child: CategoryInfo(count: "1", idCategory: "1", name: "1"),
+                  ),
+                ],
+              ),
+              const Positioned(
+                top: 0,
+                right: 0,
+                child: CategoryManageButton(),
+              ),
+            ],
+          ),
         ),
       ),
     );

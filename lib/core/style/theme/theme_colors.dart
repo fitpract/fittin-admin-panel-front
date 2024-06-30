@@ -16,6 +16,8 @@ abstract class AppColors {
   static const Color darkNavPanelBackground = Color(0xFF2A3042);
   static const Color darkButton = Color(0xFF2E6DFF);
   static const Color darkTextColor = Color(0xFFA6B0CF);
+  static const Color emptyBanner = Color(0xFFF3F3F9);
+  static const Color selector = Color(0xFF1967D2);
 }
 
 const lightColorScheme = ColorScheme(

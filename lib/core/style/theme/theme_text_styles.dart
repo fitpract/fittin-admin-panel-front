@@ -7,7 +7,7 @@ const textTheme = TextTheme(
   titleLarge: title,
   titleMedium: title,
   bodyLarge: body,
-  bodyMedium: TextStyle(),
+  bodyMedium: bodyMedium,
   bodySmall: TextStyle(),
   labelLarge: label,
   labelMedium: errorLabel,
@@ -42,6 +42,13 @@ const body = TextStyle(
   fontFamily: 'Noto Sans',
   fontWeight: FontWeight.w400,
   fontSize: 15,
+);
+
+const bodyMedium = TextStyle(
+  fontFamily: 'Noto Sans',
+  fontWeight: FontWeight.w400,
+  fontSize: 16,
+  color: AppColors.activeField,
 );
 
 const label = TextStyle(
