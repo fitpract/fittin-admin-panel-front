@@ -2,7 +2,7 @@ import 'package:fittin_admin_panel/features/home/presentation/widgets/custom_nav
 import 'package:flutter/material.dart';
 
 class CustomNavigationRailDestination {
-  final Widget icon;
+  final IconData icon;
   final String label;
   final bool hasDropdown;
   final List<CustomNavigationRailDropdownItem>? dropdownItems;

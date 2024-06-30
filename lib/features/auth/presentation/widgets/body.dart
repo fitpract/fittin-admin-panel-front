@@ -30,7 +30,7 @@ class AuthBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.black.withOpacity(0.08),
+                    color: Theme.of(context).colorScheme.onBackground.withOpacity(0.08),
                     blurRadius: 35,
                   ),
                 ],
@@ -54,7 +54,8 @@ class AuthBody extends StatelessWidget {
                       Row(
                         children: [
                           Checkbox(
-                            checkColor: AppColors.activeField, // Цвет галочки
+                            //checkColor: AppColors.activeField, // Цвет галочки
+                            checkColor: Theme.of(context).colorScheme.onSurface,
                             fillColor: WidgetStateProperty.all<Color>(Colors.transparent), // Прозрачный фон
                             value: state.rememberMe,
                             onChanged: (value) {
@@ -63,9 +64,10 @@ class AuthBody extends StatelessWidget {
                             side: WidgetStateBorderSide.resolveWith(
                                   (Set<WidgetState> states) {
                                 if (states.contains(WidgetState.selected)) {
-                                  return const BorderSide(color: AppColors.activeField, width: 2); // Цвет рамки при активации
+                                  //return const BorderSide(color: AppColors.activeField, width: 2); // Цвет рамки при активации
+                                  return BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2); // Цвет рамки при активации
                                 }
-                                return const BorderSide(color: AppColors.nonActiveField, width: 2,); // Цвет рамки по умолчанию
+                                return BorderSide(color: Theme.of(context).colorScheme.outlineVariant, width: 2,); // Цвет рамки по умолчанию
                               },
                             ),
                           ),

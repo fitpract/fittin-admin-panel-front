@@ -10,8 +10,9 @@ class CustomNavigationRail extends StatefulWidget {
   final List<CustomNavigationRailDestination> destinations;
   final bool extended;
   final EdgeInsetsGeometry destinationPadding;
-  final Color backgroundColor;
-  final Color destinationColor;
+  final Color? backgroundColor;
+  final Color? destinationColor;
+  final Color? iconsColor;
 
   const CustomNavigationRail({
     super.key,
@@ -20,8 +21,9 @@ class CustomNavigationRail extends StatefulWidget {
     required this.destinations,
     this.extended = true,
     this.destinationPadding = EdgeInsets.zero,
-    this.destinationColor = Colors.white,
-    this.backgroundColor = Colors.grey,
+    this.destinationColor,
+    this.backgroundColor,
+    this.iconsColor,
   });
 
   @override
@@ -32,8 +34,16 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
   @override
   initState() {
     super.initState();
-    destinationBackground = widget.destinationColor;
-    hoverDestinationBackground = widget.destinationColor.withOpacity(0.1);
+    if(widget.destinationColor != null) {
+      destinationBackground = widget.destinationColor;
+      hoverDestinationBackground = destinationBackground!.withOpacity(0.1);
+    }
+    if(widget.backgroundColor != null) {
+      backgroundColor = widget.backgroundColor;
+    }
+    if(widget.iconsColor != null) {
+      iconsColor = widget.iconsColor;
+    }
   }
 
   Map<int, int> expandedIndexes = {};
@@ -52,13 +62,17 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
 
   int hoverDestinationIndex = -1;
 
-  late Color destinationBackground;
+  Color? destinationBackground;
 
-  late Color hoverDestinationBackground;
+  Color? hoverDestinationBackground;
+
+  Color? iconsColor;
+
+  Color? backgroundColor;
 
   void _onMouseHover(PointerEvent details) {
     setState(() {
-      hoverDestinationBackground = destinationBackground.withOpacity(0.1);
+      //hoverDestinationBackground = destinationBackground.withOpacity(0.1);
     });
   }
 
@@ -134,6 +148,8 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
 
   @override
   Widget build(BuildContext context) {
+    destinationBackground = Theme.of(context).colorScheme.surface;
+    hoverDestinationBackground = Theme.of(context).colorScheme.surface.withOpacity(0.1);
     return widget.extended
         ? _extendedNavigationRail()
         : _collapsedNavigationRail();
@@ -141,7 +157,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
 
   Widget _extendedNavigationRail() {
     return Container(
-      color: Colors.grey[200],
+      color: backgroundColor ?? Theme.of(context).colorScheme.background,
       width: 230,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -163,11 +179,11 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                     cursor: SystemMouseCursors.click,
                     onEnter: (event) {
                       _setHoverIndex(index);
-                      _onMouseHover(event);
+                      //_onMouseHover(event);
                     },
                     onExit: (event) {
                       _setHoverIndex(-1);
-                      _onMouseUnhover(event);
+                      //_onMouseUnhover(event);
                     },
                     child: InkWell(
                       onTap: () {
@@ -190,14 +206,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                                 Text(
                                   destination.label,
                                   style: TextStyle(
-                                    color: selected
-                                        ? Theme.of(context).colorScheme.primary
-                                        : Theme.of(context)
-                                            .colorScheme
-                                            .onBackground,
-                                    fontWeight: selected
-                                        ? FontWeight.bold
-                                        : FontWeight.normal,
+                                    color: iconsColor ?? Theme.of(context).colorScheme.onSurface,
                                   ),
                                 ),
                               ],
@@ -208,11 +217,11 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                                 ? IconButton(
                                     onPressed: () =>
                                         _collapseDestination(index),
-                                    icon: const Icon(Icons.expand_less),
+                                    icon: Icon(Icons.expand_less, color: iconsColor ?? Theme.of(context).colorScheme.onSurface,),
                                   )
                                 : IconButton(
                                     onPressed: () => _expandDestination(index),
-                                    icon: const Icon(Icons.expand_more),
+                                    icon: Icon(Icons.expand_more, color: iconsColor ?? Theme.of(context).colorScheme.onSurface,),
                                   ),
                         ],
                       ),
@@ -282,7 +291,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
 
   Widget _collapsedNavigationRail() {
     return Container(
-      color: Colors.grey[200],
+      color: backgroundColor ?? Theme.of(context).colorScheme.background,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -322,8 +331,8 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                               ),
                               Text(
                                 destination.label,
-                                style: const TextStyle(
-                                  color: Colors.white,
+                                style: TextStyle(
+                                  color: widget.destinationColor,
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
@@ -343,7 +352,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
     );
   }
 
-  Widget _icon(bool selected, Widget? icon) {
+  Widget _icon(bool selected, IconData? icon) {
     return Row(
       children: [
         Container(
@@ -354,7 +363,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               : Colors.transparent,
         ),
         const SizedBox(width: 18),
-        icon ?? const SizedBox(width: 20),
+        Icon(icon, color: Theme.of(context).colorScheme.onSurface)/* ?? const SizedBox(width: 20)*/,
         const SizedBox(width: 18),
         //const Expanded(child: SizedBox(), flex: 1),
       ],
