@@ -4,5 +4,5 @@ import 'package:flutter/widgets.dart';
 
 void main() {
   setupLocator();
-  runApp(const AdminPanelApp());
+  runApp(const Wrapper());
 }

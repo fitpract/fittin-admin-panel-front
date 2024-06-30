@@ -32,57 +32,54 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return BlocProvider<HomeBloc>(
-          create: (context) => HomeBloc(),
-          child: BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) {
-              return Scaffold(
-                backgroundColor: Theme.of(context).colorScheme.background,
-                appBar: WebBar(bloc: context.read<HomeBloc>()),
-                body: Row(
-                  children: [
-                    CustomNavigationRail(
-                      selectedIndex: tabsRouter.activeIndex,
-                      onDestinationSelected: (index) {
-                        context
-                            .read<HomeBloc>()
-                            .add(ChangePageEvent(pageIndex: index));
-                        tabsRouter.setActiveIndex(index);
+        return BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return Scaffold(
+              backgroundColor: Theme.of(context).colorScheme.background,
+              appBar: WebBar(bloc: context.read<HomeBloc>()),
+              body: Row(
+                children: [
+                  CustomNavigationRail(
+                    selectedIndex: tabsRouter.activeIndex,
+                    onDestinationSelected: (index) {
+                      context
+                          .read<HomeBloc>()
+                          .add(ChangePageEvent(pageIndex: index));
+                      tabsRouter.setActiveIndex(index);
+                    },
+                    extended: state.expanded,
+                    destinationPadding: const EdgeInsets.symmetric(vertical: 1),
+                    destinations: destinations.map(
+                      (item) {
+                        if (item.hasDropdown) {
+                          return CustomNavigationRailDestination.withDropdown(
+                            icon: item.icon,
+                            label: item.label,
+                            dropdownItems: item.subRoutes
+                                ?.map(
+                                  (subRoute) =>
+                                      CustomNavigationRailDropdownItem(
+                                          label: subRoute.label),
+                                )
+                                .toList(),
+                          );
+                        } else {
+                          return CustomNavigationRailDestination
+                              .withoutDropdown(
+                            icon: item.icon,
+                            label: item.label,
+                          );
+                        }
                       },
-                      extended: state.expanded,
-                      destinationPadding: const EdgeInsets.symmetric(vertical: 1),
-                      destinations: destinations.map(
-                        (item) {
-                          if (item.hasDropdown) {
-                            return CustomNavigationRailDestination.withDropdown(
-                              icon: Icon(item.icon),
-                              label: item.label,
-                              dropdownItems: item.subRoutes
-                                  ?.map(
-                                    (subRoute) =>
-                                        CustomNavigationRailDropdownItem(
-                                            label: subRoute.label),
-                                  )
-                                  .toList(),
-                            );
-                          } else {
-                            return CustomNavigationRailDestination
-                                .withoutDropdown(
-                              icon: Icon(item.icon),
-                              label: item.label,
-                            );
-                          }
-                        },
-                      ).toList(),
-                    ),
-                    Expanded(
-                      child: child,
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+                    ).toList(),
+                  ),
+                  Expanded(
+                    child: child,
+                  ),
+                ],
+              ),
+            );
+          },
         );
       },
     );

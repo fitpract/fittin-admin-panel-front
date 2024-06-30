@@ -70,13 +70,16 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
                     child: SizedBox(width: 165.0, child: Text(list[index])),
                   ),
                 ),
+                style: MenuStyle(
+                  backgroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.primary),
+                ),
               ),
             ],
           ),
           const Padding(padding: EdgeInsets.all(10)),
           Container(
             height: 114,
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.surface,
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -84,19 +87,19 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
                 Expanded(
                     child: Text(
                   "Заголовок",
-                  style: Theme.of(context).textTheme.headlineLarge,
+                  style: Theme.of(context).textTheme.titleLarge,
                 )),
                 Expanded(
                     child: Text("Показать дату начала",
-                        style: Theme.of(context).textTheme.headlineLarge)),
+                        style: Theme.of(context).textTheme.titleLarge)),
                 Expanded(
-                    child: Text("Вкладка", style: Theme.of(context).textTheme.headlineLarge)),
+                    child: Text("Вкладка", style: Theme.of(context).textTheme.titleLarge)),
                 Expanded(
                     child:
-                        Text("Отображать", style: Theme.of(context).textTheme.headlineLarge)),
+                        Text("Отображать", style: Theme.of(context).textTheme.titleLarge)),
                 Expanded(
                     child: Text("Редактировать",
-                        style: Theme.of(context).textTheme.headlineLarge))
+                        style: Theme.of(context).textTheme.titleLarge))
               ],
             ),
           ),

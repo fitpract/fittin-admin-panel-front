@@ -17,7 +17,7 @@ class _CategoryBannerState extends State<CategoryBanner> {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 150,
-        color: Colors.black12,
+        color: Theme.of(context).colorScheme.surface,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

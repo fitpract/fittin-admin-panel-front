@@ -1,7 +1,6 @@
 import 'package:fittin_admin_panel/core/style/theme/button_style.dart';
 import 'package:flutter/material.dart';
 
-
 class CategoryManageButton extends StatefulWidget {
   const CategoryManageButton({super.key});
 
@@ -10,10 +9,9 @@ class CategoryManageButton extends StatefulWidget {
 }
 
 class _CategoryManageButtonState extends State<CategoryManageButton> {
-
-
   bool showCategory = true;
   IconData icon = Icons.visibility_outlined;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,35 +19,41 @@ class _CategoryManageButtonState extends State<CategoryManageButton> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton.outlined(
-              onPressed: (){
-
-              },
-              icon: const Icon(Icons.border_color),
-            style: rectangleButtonStyle()
-
+            onPressed: () {},
+            icon: Icon(
+              Icons.border_color,
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+            style: rectangleButtonStyle(Theme.of(context).colorScheme.secondary)
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton.outlined(
             key: ValueKey(showCategory),
-            onPressed: (){
+            onPressed: () {
               setState(() {
                 showCategory = !showCategory;
-                icon = showCategory ? Icons.visibility_outlined : Icons.visibility_off_outlined;
+                icon = showCategory
+                    ? Icons.visibility_outlined
+                    : Icons.visibility_off_outlined;
               });
             },
-            icon: Icon(icon),
-              style: rectangleButtonStyle()
+            icon: Icon(
+              icon,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            style: rectangleButtonStyle(Theme.of(context).colorScheme.primary),
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton.outlined(
-              onPressed: (){},
-              icon: const Icon(Icons.delete_outline_sharp),
-            color: Theme.of(context).focusColor,
-              style: rectangleButtonStyle()
+            onPressed: () {},
+            icon: Icon(Icons.delete_outline_sharp,
+                color: Theme.of(context).colorScheme.error),
+            //color: Theme.of(context).focusColor,
+            style: rectangleButtonStyle(Theme.of(context).colorScheme.error),
           ),
         )
       ],

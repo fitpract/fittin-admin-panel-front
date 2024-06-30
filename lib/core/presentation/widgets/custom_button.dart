@@ -31,15 +31,15 @@ class CustomButton extends StatelessWidget {
           backgroundColor: WidgetStateProperty.resolveWith<Color>(
                 (Set<WidgetState> states) {
               if (states.contains(WidgetState.hovered)) {
-                return AppColors.orangeActiveButton; // Темный цвет при наведении
+                return Theme.of(context).colorScheme.primaryContainer; // Темный цвет при наведении
               }
-              return AppColors.orangeButton; // Цвет по умолчанию
+              return Theme.of(context).colorScheme.primary; // Цвет по умолчанию
             },
           ),
-          foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
+          foregroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.surfaceVariant),
         ),
         child: isLoading
-            ? const CircularProgressIndicator(color: AppColors.white,)
+            ? CircularProgressIndicator(color: Theme.of(context).colorScheme.surfaceVariant,)
             : Text(buttonText, style: button,),
       ),
     );
