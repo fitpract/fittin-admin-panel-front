@@ -29,6 +29,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: AddNewAndRefactorProductScreen(key: args.key),
       );
     },
+    AddRouteForCategory.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddScreenForCategory(),
+      );
+    },
     AuthRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -188,6 +194,20 @@ class AddNewAndRefactorProductRouteArgs {
   String toString() {
     return 'AddNewAndRefactorProductRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [AddScreenForCategory]
+class AddRouteForCategory extends PageRouteInfo<void> {
+  const AddRouteForCategory({List<PageRouteInfo>? children})
+      : super(
+          AddRouteForCategory.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddRouteForCategory';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

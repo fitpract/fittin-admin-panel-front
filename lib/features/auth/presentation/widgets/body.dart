@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
 import 'package:fittin_admin_panel/core/style/theme/theme_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +29,10 @@ class AuthBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: Theme.of(context).colorScheme.onBackground.withOpacity(0.08),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withOpacity(0.08),
                     blurRadius: 35,
                   ),
                 ],
@@ -56,18 +58,30 @@ class AuthBody extends StatelessWidget {
                           Checkbox(
                             //checkColor: AppColors.activeField, // Цвет галочки
                             checkColor: Theme.of(context).colorScheme.onSurface,
-                            fillColor: WidgetStateProperty.all<Color>(Colors.transparent), // Прозрачный фон
+                            fillColor: WidgetStateProperty.all<Color>(
+                                Colors.transparent), // Прозрачный фон
                             value: state.rememberMe,
                             onChanged: (value) {
-                              context.read<AuthBloc>().add(const ToggleRememberMe());
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const ToggleRememberMe());
                             },
                             side: WidgetStateBorderSide.resolveWith(
-                                  (Set<WidgetState> states) {
+                              (Set<WidgetState> states) {
                                 if (states.contains(WidgetState.selected)) {
                                   //return const BorderSide(color: AppColors.activeField, width: 2); // Цвет рамки при активации
-                                  return BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2); // Цвет рамки при активации
+                                  return BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface,
+                                      width: 2); // Цвет рамки при активации
                                 }
-                                return BorderSide(color: Theme.of(context).colorScheme.outlineVariant, width: 2,); // Цвет рамки по умолчанию
+                                return BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .outlineVariant,
+                                  width: 2,
+                                ); // Цвет рамки по умолчанию
                               },
                             ),
                           ),

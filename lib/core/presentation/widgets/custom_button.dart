@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fittin_admin_panel/core/style/theme/theme_colors.dart';
 
 import '../../style/theme/theme_text_styles.dart';
 
@@ -36,10 +35,10 @@ class CustomButton extends StatelessWidget {
               return Theme.of(context).colorScheme.primary; // Цвет по умолчанию
             },
           ),
-          foregroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.surfaceVariant),
+          foregroundColor: WidgetStateProperty.all<Color>(Theme.of(context).colorScheme.surfaceContainerHighest),
         ),
         child: isLoading
-            ? CircularProgressIndicator(color: Theme.of(context).colorScheme.surfaceVariant,)
+            ? CircularProgressIndicator(color: Theme.of(context).colorScheme.surfaceContainerHighest,)
             : Text(buttonText, style: button,),
       ),
     );

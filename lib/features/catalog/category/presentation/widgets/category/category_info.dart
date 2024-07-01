@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../core/style/theme/theme_text_styles.dart'; // Для доступа к FlutterClipboard
+import '../../../../../../../core/style/theme/theme_text_styles.dart';
 
 class CategoryInfo extends StatefulWidget {
   const CategoryInfo({
@@ -12,8 +11,8 @@ class CategoryInfo extends StatefulWidget {
   });
 
   final String name;
-  final String idCategory;
-  final String count;
+  final int idCategory;
+  final int count;
 
   @override
   State<StatefulWidget> createState() => _CategoryInfoState();
@@ -21,8 +20,8 @@ class CategoryInfo extends StatefulWidget {
 
 class _CategoryInfoState extends State<CategoryInfo> {
   late final String name;
-  late final String idCategory;
-  late final String count;
+  late final int idCategory;
+  late final int count;
 
   @override
   void initState() {

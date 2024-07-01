@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fittin_admin_panel/core/navigation/app_router.dart';
 import 'package:fittin_admin_panel/core/style/theme/theme_text_styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../core/style/theme/theme_colors.dart';
+import '../../../../../../../core/style/theme/theme_colors.dart';
 
 class AddCategoryButton extends StatefulWidget {
   const AddCategoryButton({super.key});
@@ -30,7 +31,11 @@ class _AddCategoryButtonState extends State<AddCategoryButton> {
         color: isHovered ? AppColors.orangeButton : Colors.transparent,
         borderRadius: BorderRadius.circular(5.0),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            AutoRouter.of(context).navigate(
+              const AddRouteForCategory(),
+            );
+          },
           borderRadius: BorderRadius.circular(5.0),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 10.5),

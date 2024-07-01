@@ -1,4 +1,4 @@
-import 'package:fittin_admin_panel/features/catalog/category/category_view/widgets/top_panel/sort_list.dart';
+import 'package:fittin_admin_panel/features/catalog/category/presentation/widgets/top_panel/sort_list.dart';
 import 'package:flutter/material.dart';
 
 import 'add_category_button.dart';
